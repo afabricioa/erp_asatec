@@ -5,8 +5,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Processo extends Model{
-    protected $keyType = 'string';
-    protected $primaryKey = 'cpf';
 
     protected $fillable = [
         'cpf', 'asscontrato', 'dataass', 'docterreno', 'dataterreno', 'engenharia', 'dataengenharia', 'docpessoal', 'datadocpessoal',

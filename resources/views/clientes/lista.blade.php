@@ -16,8 +16,6 @@
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>RG</th>
-                    <th>Endereço</th>
-                    <th>Estado Civil</th>
                     <th id="teste">Ocupação</th>
                     <th>#</th>
                 </tr>
@@ -28,10 +26,8 @@
                         <td>{{ $cliente->nome }}</td>
                         <td>{{ $cliente->cpf }}</td>
                         <td>{{ $cliente->rg }}</td>
-                        <td>{{ $cliente->endereco }}</td>
-                        <td>{{ $cliente->estadocivil }}</td>
                         <td>{{ $cliente->profissao }}</td>
-                        <td><a href="{{ route('cliente.show', $cliente->id) }}"><i class="fas fa-info"></a></i></td>
+                        <td><a href="{{ route('cliente.show', $cliente->cpf) }}"><i class="fas fa-info"></a></i></td>
                     </tr>
                 @endforeach
             </tbody>

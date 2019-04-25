@@ -247,8 +247,9 @@
                         </div>
                     </div> --}}
                 </div>
+                <hr>
                 <div class="form-group">
-                    <input type="text" name="nome" class="form-control" placeholder="Observações">
+                    <input type="text" name="avisos" id="avisos" class="form-control" placeholder="Observações">
                 </div>
 
                 <button class="btn btn-primary bt" type="submit">Salvar</button>

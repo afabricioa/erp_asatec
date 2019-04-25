@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmpreendimentoTable extends Migration
+class CreateClientesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateEmpreendimentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('empreendimentos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('clientes', function (Blueprint $table) {
             $table->string('nome');
+            $table->string('cpf', 14)->primary();
+            $table->string('rg')->unique();
             $table->string('endereco');
-            $table->integer('nLotes');
+            $table->string('estadocivil');
+            $table->string('profissao');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateEmpreendimentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empreendimentos');
+        Schema::dropIfExists('clientes');
     }
 }
