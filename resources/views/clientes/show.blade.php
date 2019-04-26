@@ -25,7 +25,9 @@
             <div class="row">
                 <h5 class="card-title">Contrato Construtora</h5>
             </div>
-            <form>
+            <form method="post" action="{{ route('processo.update', $cliente->cpf) }}">
+                @method('PUT')
+                @csrf
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-check">
@@ -267,32 +269,12 @@
             'type': 'date'
         });
 
-        var appendDataCaixa = $('<input />',{
-            'id': 'dataCaixa',
-            'type': 'date'
-        });
-
-        var appendObsCaixa = $('<input />', {
-            'id': 'obsCaixa',
-            'type': 'text',
-            'class': 'form-control',
-            'placeholder': 'Observação'
-        });
-
-        var btnAdd = "<button class='btn btn-primary by' id='btnObsCaixa'>Adicionar Observação</button>";
-        
-
         $('input:radio[name="contrato"]').change(function(){
             if(this.checked){
                 $(appendData).appendTo('#dataass');
                 $('#observacao').append(observacao);
                 $('#dataassinada').append("<span class='data'>22/02/1993</span>");
             }
-        });
-
-        $("#btnObs").click(function(){
-            $('#btnObs').remove();
-            $(appendObs).appendTo('#obs');
         });
 
         $('input:radio[name="docterreno"]').change(function(){

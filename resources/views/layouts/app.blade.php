@@ -104,7 +104,7 @@
 
                         <ul class="list-unstyled components">
                             <li>
-                                <a href="#">
+                                <a href="/">
                                     <i class="fas fa-home"></i>
                                     Home
                                 </a>

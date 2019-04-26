@@ -33,8 +33,7 @@ class ProcessoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         //
     }
 
@@ -67,9 +66,33 @@ class ProcessoController extends Controller
      * @param  \App\Processo  $processo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Processo $processo)
-    {
-        //
+    public function update(Request $request, $cpf){
+        $processo = Processo::find($cpf);
+
+        $processo->asscontrato = $request->get('contrato');
+        $processo->dataass = $request->get('asscontrato');
+        $processo->docterreno = $request->get('docterreno');
+        $processo->dataterreno = $request->get('dataterreno');
+        $processo->engenharia = $request->get('engenharia');
+        $processo->dataengenharia = $request->get('dataengenharia');
+        $processo->docpessoal = $request->get('docpessoal');
+        $processo->datadocpessoal = $request->get('datadocpessoal');
+        $processo->conformidade = $request->get('conformidade');
+        $processo->dataconformidade = $request->get('dataconformidade');
+        $processo->entrevista = $request->get('entrevista');
+        $processo->dataentrevista = $request->get('dataentrevista');
+        $processo->contratocaixa = $request->get('contratocaixa');
+        $processo->datacaixa = $request->get('datacaixa');
+        $processo->catorio1 = $request->get('catorio1');
+        $processo->datacatorio1 = $request->get('datacatorio1');
+        $processo->obras = $request->get('obras');
+        $processo->dataobras = $request->get('dataobras');
+        $processo->cartorio2 = $request->get('cartorio2');
+        $processo->datacartorio2 = $request->get('datacartorio2');
+        $processo->observacao = $request->get('avisos');
+        $processo->save();
+
+        return redirect()->route('cliente.index');
     }
 
     /**

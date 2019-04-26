@@ -6,6 +6,7 @@ use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use DB;
 
 class ClienteController extends Controller
 {
@@ -54,6 +55,10 @@ class ClienteController extends Controller
         ]);
 
         $cliente->create($request->all());
+
+        $cpf = $request->input('cpf');
+        $processo = array('cliente_cpf'=>$cpf);
+        DB::table('processos')->insert($processo);
         Session::flash('msg', 'Cliente cadastrado com sucesso!');
 
         return redirect()->route('cliente.index');
