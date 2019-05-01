@@ -69,27 +69,64 @@ class ProcessoController extends Controller
      */
     public function update(Request $request, $cpf){
         $processo = Processo::find($cpf);
+        
+        if(empty($processo->asscontrato)){
+            $processo->asscontrato = $request->get('contrato');
+            $processo->dataass = $request->get('asscontrato');
+        }
 
-        $processo->asscontrato = $request->get('contrato');
-        $processo->dataass = $request->get('asscontrato');
-        $processo->docterreno = $request->get('docterreno');
-        $processo->dataterreno = $request->get('dataterreno');
-        $processo->engenharia = $request->get('engenharia');
-        $processo->dataengenharia = $request->get('dataengenharia');
-        $processo->docpessoal = $request->get('docpessoal');
-        $processo->datadocpessoal = $request->get('datadocpessoal');
-        $processo->conformidade = $request->get('conformidade');
-        $processo->dataconformidade = $request->get('dataconformidade');
-        $processo->entrevista = $request->get('entrevista');
-        $processo->dataentrevista = $request->get('dataentrevista');
-        $processo->contratocaixa = $request->get('contratocaixa');
-        $processo->datacaixa = $request->get('datacaixa');
-        $processo->cartorio1 = $request->get('cartorio1');
-        $processo->datacartorio1 = $request->get('datacartorio1');
-        $processo->obras = $request->get('obras');
-        $processo->dataobras = $request->get('dataobras');
-        $processo->cartorio2 = $request->get('cartorio2');
-        $processo->datacartorio2 = $request->get('datacartorio2');
+        if(empty($processo->docterreno)){
+            $processo->docterreno = $request->get('docterreno');
+            $processo->dataterreno = $request->get('dataterreno');
+        }
+        
+        
+        if(empty($processo->engenharia)){
+            $processo->engenharia = $request->get('engenharia');
+            $processo->dataengenharia = $request->get('dataengenharia');
+        }
+        
+        
+        if(empty($processo->docpessoal)){
+            $processo->docpessoal = $request->get('docpessoal');
+            $processo->datadocpessoal = $request->get('datadocpessoal');
+        }
+        
+        if(empty($processo->conformidade)){
+            $processo->conformidade = $request->get('conformidade');
+            $processo->dataconformidade = $request->get('dataconformidade');
+        }
+
+
+        if(empty($processo->entrevista)){
+            $processo->entrevista = $request->get('entrevista');
+            $processo->dataentrevista = $request->get('dataentrevista');
+        }
+        
+
+        if(empty($processo->contratocaixa)){
+            $processo->contratocaixa = $request->get('contratocaixa');
+            $processo->datacaixa = $request->get('datacaixa');
+        }
+        
+
+        if(empty($processo->doctercartorio1reno)){
+            $processo->cartorio1 = $request->get('cartorio1');
+            $processo->datacartorio1 = $request->get('datacartorio1');
+        }
+        
+
+        if(empty($processo->obras)){
+            $processo->obras = $request->get('obras');
+            $processo->dataobras = $request->get('dataobras');
+        }
+        
+
+        if(empty($processo->cartorio2)){
+            $processo->cartorio2 = $request->get('cartorio2');
+            $processo->datacartorio2 = $request->get('datacartorio2');
+        }
+        
         $processo->observacao = $request->get('avisos');
         $processo->save();
 

@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="dataterrenook">
+                        <div class="data" id="dataterrenook">
                         </div>
                     </div>
                 </div> 
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="dataengenhariaok">
+                        <div class="data" id="dataengenhariaok">
                         </div>
                     </div>
                 </div> 
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="datadocpessoalok">
+                        <div class="data" id="datadocpessoalok">
                         </div>
                     </div>
                 </div> 
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="dataconformidadeok">
+                        <div class="data" id="dataconformidadeok">
                         </div>
                     </div>
                 </div> 
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="dataentrevistaok">
+                        <div class="data" id="dataentrevistaok">
                         </div>
                     </div>
                 </div> 
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="datacaixaok">
+                        <div class="data" id="datacaixaok">
                         </div>
                     </div>
                 </div> 
@@ -196,7 +196,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="datacartorio1ok">
+                        <div class="data" id="datacartorio1ok">
                         </div>
                     </div>
                 </div> 
@@ -218,7 +218,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="dataobrasok">
+                        <div class="data" id="dataobrasok">
                         </div>
                     </div>
                 </div> 
@@ -240,7 +240,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="datacartorio2ok">
+                        <div class="data" id="datacartorio2ok">
                         </div>
                     </div>
                     {{-- <div class="col-md-6">
@@ -268,13 +268,14 @@
         var appendData = $('<input />',{
             'name': 'asscontrato',
             'type': 'date',
-            'value': '{{ $processo->dataass }}',
+            'value': '{{ $processo->dataass }}', 
             'required': 'true'
         });
 
         var appendDataTerreno = $('<input />',{
             'name': 'dataterreno',
             'type': 'date',
+            'value': '{{ $processo->dataterreno }}', 
             'required': 'true'
         });
 
@@ -354,7 +355,7 @@
             $('#dataengenhariaok').append("Data assinatura: {{ Carbon::parse($processo->dataengenharia)->format('d/m/Y') }}"); 
         }else{
             $('input:radio[name="engenharia"]').change(function(){
-                if(this.checked && !!"{{ $processo->dataengenharia }}"){
+                if(this.checked){
                     $(appendDataEngenharia).appendTo('#dataengenharia');
                 }
             });
