@@ -8,7 +8,7 @@ class Processo extends Model{
 
     protected $fillable = [
         'cliente_cpf', 'asscontrato', 'dataass', 'docterreno', 'dataterreno', 'engenharia', 'dataengenharia', 'docpessoal', 'datadocpessoal',
-        'conformidade', 'dataconformidade', 'entrevista', 'dataentrevista', 'contratocaixa', 'datacaixa', 'catorio1', 'datacatorio1',
+        'conformidade', 'dataconformidade', 'entrevista', 'dataentrevista', 'contratocaixa', 'datacaixa', 'cartorio1', 'datacartorio1',
         'obras', 'dataobras', 'cartorio2', 'datacartorio2', 'observacao', 
     ];
 

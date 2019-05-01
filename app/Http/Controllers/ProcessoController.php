@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon;
 use App\Processo;
 use Illuminate\Http\Request;
 
@@ -83,8 +84,8 @@ class ProcessoController extends Controller
         $processo->dataentrevista = $request->get('dataentrevista');
         $processo->contratocaixa = $request->get('contratocaixa');
         $processo->datacaixa = $request->get('datacaixa');
-        $processo->catorio1 = $request->get('catorio1');
-        $processo->datacatorio1 = $request->get('datacatorio1');
+        $processo->cartorio1 = $request->get('cartorio1');
+        $processo->datacartorio1 = $request->get('datacartorio1');
         $processo->obras = $request->get('obras');
         $processo->dataobras = $request->get('dataobras');
         $processo->cartorio2 = $request->get('cartorio2');

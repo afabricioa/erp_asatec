@@ -30,8 +30,8 @@ class CreateProcessosTable extends Migration
             $table->date('dataentrevista')->nullable();
             $table->string('contratocaixa')->nullable();
             $table->date('datacaixa')->nullable();
-            $table->string('catorio1')->nullable();
-            $table->date('datacatorio1')->nullable();
+            $table->string('cartorio1')->nullable();
+            $table->date('datacartorio1')->nullable();
             $table->string('obras')->nullable();
             $table->date('dataobras')->nullable();
             $table->string('cartorio2')->nullable();

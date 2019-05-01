@@ -10881,9 +10881,9 @@ ul ul a {
 }
 
 .data{
-  position: absolute;
+  float: right;
   bottom: 0;
-  right: 0;
+  right: 10px;
   padding: 5px;
   font-style: italic;
 }

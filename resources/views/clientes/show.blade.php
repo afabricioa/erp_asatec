@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div id="dataassinada">
+                        <div class="data" id="dataassinada">
                         </div>
                     </div>
                 </div> 
@@ -185,8 +185,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="catorio1" id="catorio1" value="cartorio1rec">
-                            <label class="form-check-label" for="catorio1">
+                            <input class="form-check-input" type="radio" name="cartorio1" id="cartorio1" value="cartorio1rec">
+                            <label class="form-check-label" for="cartorio1">
                                 Recebido
                             </label>
                         </div>
@@ -264,24 +264,178 @@
             $('#processo.in').toggleClass('in');
         });
 
+
         var appendData = $('<input />',{
             'name': 'asscontrato',
+            'type': 'date',
+            'value': '{{ $processo->dataass }}',
+            'required': 'true'
+        });
+
+        var appendDataTerreno = $('<input />',{
+            'name': 'dataterreno',
+            'type': 'date',
+            'required': 'true'
+        });
+
+        var appendDataEngenharia = $('<input />',{
+            'name': 'dataengenharia',
+            'type': 'date',
+            'required': 'true'
+        });
+
+        var appendDataDocPessoal = $('<input />',{
+            'name': 'datadocpessoal',
+            'type': 'date',
+            'required': 'true'
+        });
+
+        var appendDataConformidade = $('<input />',{
+            'name': 'dataconformidade',
+            'type': 'date',
+            'required': 'true'
+        });
+
+        var appendDataEntrevista = $('<input />',{
+            'name': 'dataentrevista',
             'type': 'date'
         });
 
-        $('input:radio[name="contrato"]').change(function(){
-            if(this.checked){
-                $(appendData).appendTo('#dataass');
-                $('#observacao').append(observacao);
-                $('#dataassinada').append("<span class='data'>22/02/1993</span>");
-            }
+        var appendDataCaixa = $('<input />',{
+            'name': 'datacaixa',
+            'type': 'date',
+            'required': 'true'
         });
 
-        $('input:radio[name="docterreno"]').change(function(){
-            if(this.checked){
-                $(appendDataCaixa).appendTo('#dataterreno');
-            }
+        var appendDataCartorio1 = $('<input />',{
+            'name': 'datacartorio1',
+            'type': 'date',
+            'required': 'true'
         });
+
+        var appendDataObras = $('<input />',{
+            'name': 'dataobras',
+            'type': 'date',
+            'required': 'true'
+        });
+
+        var appendDataCartorio2 = $('<input />',{
+            'name': 'datacartorio2',
+            'type': 'date',
+            'required': 'true'
+        });
+    
+        var datacompleta = "{{ Carbon::parse($processo->dataass)->format('d/m/Y') }}";
+        
+        if(!!"{{ $processo->asscontrato }}"){
+            document.getElementById("contrato").checked = true;
+            $('#dataassinada').append("Data assinatura: {{ Carbon::parse($processo->dataass)->format('d/m/Y') }}");
+        }else{
+            $('input:radio[name="contrato"]').change(function(){
+                if(this.checked){
+                    $(appendData).appendTo('#dataass');
+                }
+            });
+        }
+        
+        if(!!"{{ $processo->docterreno }}"){
+            document.getElementById("docterreno").checked = true;
+            $('#dataterrenook').append("Data assinatura: {{ Carbon::parse($processo->dataterreno)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="docterreno"]').change(function(){
+                if(this.checked){
+                    $(appendDataTerreno).appendTo('#dataterreno');
+                }
+            });
+        }
+        
+        if(!!"{{ $processo->engenharia }}"){
+            document.getElementById("engenharia").checked = true;
+            $('#dataengenhariaok').append("Data assinatura: {{ Carbon::parse($processo->dataengenharia)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="engenharia"]').change(function(){
+                if(this.checked && !!"{{ $processo->dataengenharia }}"){
+                    $(appendDataEngenharia).appendTo('#dataengenharia');
+                }
+            });
+        }
+        
+        if(!!"{{ $processo->docpessoal }}"){
+            document.getElementById("docpessoal").checked = true;
+            $('#datadocpessoalok').append("Data assinatura: {{ Carbon::parse($processo->datadocpessoal)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="docpessoal"]').change(function(){
+                if(this.checked){
+                    $(appendDataDocPessoal).appendTo('#datadocpessoal');
+                }
+            });
+        }
+
+        if(!!"{{ $processo->conformidade }}"){
+            document.getElementById("conformidade").checked = true;
+            $('#dataconformidadeok').append("Data assinatura: {{ Carbon::parse($processo->dataconformidade)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="conformidade"]').change(function(){
+                if(this.checked){
+                    $(appendDataConformidade).appendTo('#dataconformidade');
+                }
+            });
+        }
+
+        if(!!"{{ $processo->entrevista }}"){
+            document.getElementById("entrevista").checked = true;
+            $('#dataentrevistaok').append("Data assinatura: {{ Carbon::parse($processo->dataentrevista)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="entrevista"]').change(function(){
+                if(this.checked){
+                    $(appendDataEntrevista).appendTo('#dataentrevista');
+                }
+            });
+        }
+
+        if(!!"{{ $processo->contratocaixa }}"){
+            document.getElementById("contratocaixa").checked = true;
+            $('#datacaixaok').append("Data assinatura: {{ Carbon::parse($processo->datacaixa)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="contratocaixa"]').change(function(){
+                if(this.checked){
+                    $(appendDataCaixa).appendTo('#datacaixa');
+                }
+            });
+        }
+
+        if(!!"{{ $processo->cartorio1 }}"){
+            document.getElementById("cartorio1").checked = true;
+            $('#datacartorio1ok').append("Data assinatura: {{ Carbon::parse($processo->cartorio1)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="cartorio1"]').change(function(){
+                if(this.checked){
+                    $(appendDataCartorio1).appendTo('#datacartorio1');
+                }
+            });
+        }
+
+        if(!!"{{ $processo->obras }}"){
+            document.getElementById("obras").checked = true;
+            $('#dataobrasok').append("Data assinatura: {{ Carbon::parse($processo->dataobras)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="obras"]').change(function(){
+                if(this.checked){
+                    $(appendDataObras).appendTo('#dataobras');
+                }
+            });
+        }
+
+        if(!!"{{ $processo->cartorio2 }}"){
+            document.getElementById("cartorio2").checked = true;
+            $('#datacartorio2ok').append("Data assinatura: {{ Carbon::parse($processo->datacartorio2)->format('d/m/Y') }}"); 
+        }else{
+            $('input:radio[name="cartorio2"]').change(function(){
+                if(this.checked){
+                    $(appendDataCartorio2).appendTo('#datacartorio2');
+                }
+            });
+        }
     </script>
 @endsection
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cliente;
+use App\Processo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
@@ -72,7 +73,8 @@ class ClienteController extends Controller
      */
     public function show($cpf){
         $cliente = Cliente::find($cpf);
-        return view('clientes.show', compact('cliente'));
+        $processo = Processo::find($cpf);
+        return view('clientes.show', compact('cliente', 'processo'));
     }
 
     /**
