@@ -1,6 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(Session::has('msg'))
+        <div class="modal fade" id="modalExclusao" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalDelete">ASATEC</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ Session::get('msg') }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="card">
         <div class="card-body">
             <div class="text-center">
@@ -47,6 +67,9 @@
     </script>
 
     <script>
+
+        $('#modalExclusao').modal('show');
+        
         var table = document.getElementById('tabelaclientes');
         for (var r = 0, n = table.rows.length; r < n; r++) {
             for(var c = 0, m = table.rows[r].cells.length; c < m; c++){

@@ -83,9 +83,9 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
-    {
-        //
+    public function edit($cpf){
+        $cliente = Cliente::find($cpf);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -95,9 +95,26 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
-    {
-        //
+    public function update(Request $request, $cpf){
+        $request->validate([
+            'nome' => 'required',
+            'cpf' => 'required',
+            'rg' => 'required',
+            'estadocivil' => 'required',
+            'endereco' => 'required',
+            'profissao' => 'required'
+        ]);
+
+        $cliente = Cliente::find($cpf);
+        $cliente->nome = $request->get('nome');
+        $cliente->cpf = $request->get('cpf');
+        $cliente->rg = $request->get('rg');
+        $cliente->estadocivil = $request->get('estadocivil');
+        $cliente->endereco = $request->get('endereco');
+        $cliente->profissao = $request->get('profissao');
+        $cliente->save();
+
+        return redirect()->route('cliente.show', $cpf)->with('msg', 'Cliente atualizado com sucesso!');
     }
 
     /**
@@ -106,8 +123,10 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
-    {
-        //
+    public function destroy($cpf){
+        $cliente = Cliente::find($cpf);
+        $cliente->delete();
+        return redirect()->route('cliente.index')->with('msg', 'Cliente excluido com sucesso!');
+        
     }
 }

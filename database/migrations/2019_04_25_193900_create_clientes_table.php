@@ -11,8 +11,7 @@ class CreateClientesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('clientes', function (Blueprint $table) {
             $table->string('nome');
             $table->string('cpf', 14)->primary();

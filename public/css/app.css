@@ -10920,3 +10920,13 @@ ul ul a {
 .open{
   float: right
 }
+
+#areanotificacao{
+  position: relative; 
+  min-height: 200px;
+}
+
+#notificacao{
+  position: absolute; 
+  top: 0; right: 0;
+}

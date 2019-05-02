@@ -70,6 +70,7 @@ class ProcessoController extends Controller
     public function update(Request $request, $cpf){
         $processo = Processo::find($cpf);
         
+        
         if(empty($processo->asscontrato)){
             $processo->asscontrato = $request->get('contrato');
             $processo->dataass = $request->get('asscontrato');

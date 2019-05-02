@@ -21,16 +21,16 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <input type="text" name="cpf" class="form-control" placeholder="CPF">
+                    <input type="text" name="cpf" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="validar('###.###.###-##',this)">
                 </div>
                 <div class="form-group col-md-4">
-                    <input type="text" name="rg" class="form-control" placeholder="RG">
+                    <input type="text" name="rg" class="form-control" placeholder="RG" maxlength="9" OnKeyPress="validar('#.###.###', this)">
                 </div>
                 <div class="form-group col-sm-4">
                     <select name="estadocivil" class="form-control form-control-md">
-                        <option value="solteiro">Solteiro(a)</option>
-                        <option value="casado">Casado(a)</option>
-                        <option value="divorciado">Divorciado(a)</option>
+                        <option value="Solteiro">Solteiro(a)</option>
+                        <option value="Casado">Casado(a)</option>
+                        <option value="Divorciado">Divorciado(a)</option>
                     </select>
                 </div>
             </div>
@@ -44,4 +44,16 @@
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>
+
+    <script>
+        function validar(formato, valor){
+            var i = valor.value.length;
+            var saida = formato.substring(0,1);
+            var texto = formato.substring(i);
+
+            if(texto.substring(0,1) != saida){
+                valor.value += texto.substring(0,1);
+            }
+        }
+    </script>
 @endsection
