@@ -1643,6 +1643,15 @@ pre code {
   border-top: 1px solid #dee2e6;
 }
 
+.table td a{
+  font-size: 1.3em;
+  color: #3395f0;
+}
+
+.table td a:hover{
+  color: #ec8e4f;
+}
+
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
@@ -10929,4 +10938,12 @@ ul ul a {
 #notificacao{
   position: absolute; 
   top: 0; right: 0;
+}
+
+.botoes{
+  position: relative;
+  padding: 1rem;
+  margin: 1rem -15px 0;
+  border: solid #f8f9fa;
+  border-width: .2rem 0 0;
 }

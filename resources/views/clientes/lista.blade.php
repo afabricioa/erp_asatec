@@ -37,7 +37,7 @@
                     <th>CPF</th>
                     <th>RG</th>
                     <th id="teste">Ocupação</th>
-                    <th>#</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@
                         <td>{{ $cliente->cpf }}</td>
                         <td>{{ $cliente->rg }}</td>
                         <td>{{ $cliente->profissao }}</td>
-                        <td><a href="{{ route('cliente.show', $cliente->cpf) }}"><i class="fas fa-info"></a></i></td>
+                        <td><a href="{{ route('cliente.show', $cliente->cpf) }}"><i class="fas fa-info"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>

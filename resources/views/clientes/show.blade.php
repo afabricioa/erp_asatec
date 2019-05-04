@@ -36,34 +36,34 @@
     </div>
 
     <br>
-    <div class="row">
-        <div class="col-sm-1">
-            <a href="{{ route('cliente.edit', $cliente->cpf) }}" class="btn btn-success text-white">Editar</a>
-        </div>
-        <div class="col-sm-1">
-            <button class="btn btn-danger" data-target="modalDeletar" id="btnexcluir" data-toggle="modal">Excluir</button>
-            <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5>Excluindo cliente</h5>
-                        </div>
-                        <div class="modal-body">
-                            Confirma a exclusão do cliente: {{ $cliente->nome }}
-                            <form action="{{ route('cliente.destroy', $cliente->cpf) }}" method="post">
-                                @method('DELETE')
-                                @csrf
-                                <br>
-                                <button type="submit" id="btnsim" class="btn btn-danger text-white">Sim</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                            </form>
-                        </div>
+    <div class="botoes">
+        <a href="{{ route('cliente.edit', $cliente->cpf) }}" class="btn btn-info text-white">Alterar</a>
+        
+        <button class="btn btn-info text-white" data-target="modalDeletar" id="btnexcluir" data-toggle="modal">Excluir</button>
+        <div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Excluindo cliente</h5>
+                    </div>
+                    <div class="modal-body">
+                        Confirma a exclusão do cliente: {{ $cliente->nome }}
+                        <form action="{{ route('cliente.destroy', $cliente->cpf) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <br>
+                            <button type="submit" id="btnsim" class="btn btn-danger text-white">Sim</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        <a href="{{ route('contrato.show', $cliente->cpf) }}" class="btn btn-info text-white">
+            Contrato
+        </a>
     </div>
-
+    
     <br>
     <div class="card">
         <div class="card-header bg-primary text-white">

@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contrato extends Model{
     protected $fillable = [
-        'cliente', 'corretor', 'empreendimento', 'quadra', 'lote', 'planta', 'tamanhoLote', 'valorLote', 'valorPlanta',
+        'cliente_cpf', 'corretor', 'empreendimento', 'quadra', 'lote', 'planta', 'endereco', 'tamanhoLote', 'valorLote', 'valorPlanta',
     ];
+
+    protected $primaryKey = 'cliente_cpf';
+    protected $keyType = 'string';
+
+    public $incrementing = false;
 }

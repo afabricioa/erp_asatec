@@ -133,7 +133,7 @@
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="{{ route('contrato.index') }}">
                                     <i class="fas fa-file-contract"></i>
                                     Contrato
                                 </a>

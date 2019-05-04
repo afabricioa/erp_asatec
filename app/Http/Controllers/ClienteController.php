@@ -59,7 +59,9 @@ class ClienteController extends Controller
 
         $cpf = $request->input('cpf');
         $processo = array('cliente_cpf'=>$cpf);
+        $contrato = array('cliente_cpf'=>$cpf);
         DB::table('processos')->insert($processo);
+        DB::table('contratos')->insert($contrato);
         Session::flash('msg', 'Cliente cadastrado com sucesso!');
 
         return redirect()->route('cliente.index');

@@ -21,8 +21,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/teste', 'PageController@teste');
 
-Route::get('/contrato', 'PageController@contrato')->middleware('auth');
-
 Route::get('/restrita', 'PageController@restrita');
 
 Route::resource('cliente', 'ClienteController')->middleware('auth');
@@ -30,6 +28,8 @@ Route::resource('cliente', 'ClienteController')->middleware('auth');
 Route::resource('empreendimento', 'EmpreendimentoController')->middleware('auth');
 
 Route::resource('processo', 'ProcessoController')->middleware('auth');
+
+Route::resource('contrato', 'ContratoController')->middleware('auth');
 
 
 
