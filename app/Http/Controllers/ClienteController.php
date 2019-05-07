@@ -76,6 +76,7 @@ class ClienteController extends Controller
     public function show($cpf){
         $cliente = Cliente::find($cpf);
         $processo = Processo::find($cpf);
+        
         return view('clientes.show', compact('cliente', 'processo'));
     }
 

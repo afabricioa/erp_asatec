@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Contrato;
+use App\Processo;
+
 use Illuminate\Http\Request;
 
 class ContratoController extends Controller
@@ -14,7 +16,8 @@ class ContratoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('contratos.lista');
+        $contratos = Contrato::get();
+        return view('contratos.lista', ['contratos' => $contratos]);
     }
 
     /**
@@ -43,10 +46,12 @@ class ContratoController extends Controller
      */
     public function show($cpf){
         $contrato = Contrato::find($cpf);
+        $cliente = Cliente::find($cpf);
+        $processo = Processo::find($cpf);
         if(empty($contrato->empreendimento)){
             return redirect()->route('contrato.edit', $contrato->cliente_cpf);
         }else{
-            return view('contratos.show', compact('contrato'));
+            return view('contratos.show', compact('contrato', 'cliente', 'processo'));
         }
         
     }
