@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Cliente;
 use App\Processo;
+use App\Noticias;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use DB;
+use DateTime;
 
 class ClienteController extends Controller
 {
@@ -60,6 +63,7 @@ class ClienteController extends Controller
         $cpf = $request->input('cpf');
         $processo = array('cliente_cpf'=>$cpf);
         $contrato = array('cliente_cpf'=>$cpf);
+        
         DB::table('processos')->insert($processo);
         DB::table('contratos')->insert($contrato);
         Session::flash('msg', 'Cliente cadastrado com sucesso!');
@@ -88,6 +92,7 @@ class ClienteController extends Controller
      */
     public function edit($cpf){
         $cliente = Cliente::find($cpf);
+       
         return view('clientes.edit', compact('cliente'));
     }
 
@@ -129,6 +134,7 @@ class ClienteController extends Controller
     public function destroy($cpf){
         $cliente = Cliente::find($cpf);
         $cliente->delete();
+
         return redirect()->route('cliente.index')->with('msg', 'Cliente excluido com sucesso!');
         
     }

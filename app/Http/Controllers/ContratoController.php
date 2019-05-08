@@ -6,6 +6,9 @@ use App\Cliente;
 use App\Contrato;
 use App\Processo;
 
+use DB;
+use DateTime;
+
 use Illuminate\Http\Request;
 
 class ContratoController extends Controller
@@ -99,6 +102,10 @@ class ContratoController extends Controller
         $contrato->valorLote = $request->get('valorLote');
         $contrato->valorPlanta = $request->get('valorPlanta');
         $contrato->save();
+
+        $dataCadastro = new DateTime();
+        $noticia = array('cpf'=>$cpf, 'descricao'=>'Contrato realizado lote: '.$contrato->quadra.$contrato->lote, 'data'=>$dataCadastro, 'tipo'=>'contrato');
+        DB::table('noticias')->insert($noticia);
 
         return redirect()->route('contrato.index')->with('msg', 'Contrato cadastrado!');
 

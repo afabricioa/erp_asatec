@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Noticias extends Model{
     protected $fillable = [
-        'data', 'tipo', 
+        'cpf', 'descricao', 'data', 'tipo',
     ];
 }

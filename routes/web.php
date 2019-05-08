@@ -31,5 +31,7 @@ Route::resource('processo', 'ProcessoController')->middleware('auth');
 
 Route::resource('contrato', 'ContratoController')->middleware('auth');
 
+Route::resource('noticia', 'NoticiaController')->middleware('auth');
+
 
 

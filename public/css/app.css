@@ -10947,3 +10947,12 @@ ul ul a {
   border: solid #f8f9fa;
   border-width: .2rem 0 0;
 }
+
+span a{
+  font-size: 1.3em;
+  color: #3395f0;
+}
+
+span a:hover{
+  color: #ec8e4f;
+}
