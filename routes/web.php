@@ -23,6 +23,8 @@ Route::get('/teste', 'PageController@teste');
 
 Route::get('/restrita', 'PageController@restrita');
 
+Route::get('/areacliente', 'PageController@areacliente');
+
 Route::resource('cliente', 'ClienteController')->middleware('auth');
 
 Route::resource('empreendimento', 'EmpreendimentoController')->middleware('auth');

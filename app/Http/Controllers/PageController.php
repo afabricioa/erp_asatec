@@ -45,4 +45,8 @@ class PageController extends Controller
     public function restrita(){
         return view('restrita');
     }
+
+    public function areacliente(){
+        return view('areacliente');
+    }
 }

@@ -16,7 +16,16 @@
                             <span class="d-block text-left mt-3">
                                 <a href="{{ route('contrato.show', $noticia->cpf) }}">Detalhes</a>
                             </span>
+                        @elseif ($noticia->tipo == 'processo')
+                            <strong class="d-block text-gray-dark">Atualização de processo</strong>
+                            {{ $noticia->descricao }}
+                            <br><br>
+                            <span> Data: {{ Carbon::parse($noticia->data)->format('d/m/Y') }} </span>
+                            <span class="d-block text-left mt-3">
+                                <a href="{{ route('contrato.show', $noticia->cpf) }}">Detalhes</a>
+                            </span>
                         @endif
+
                     </p>
                 </div>
                 

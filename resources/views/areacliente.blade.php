@@ -4,7 +4,8 @@
     <div class="text-center">
         <form id="formulario" method="POST" action="{{ route('login') }}">
             @csrf
-            <img class="mb-4" src="/../imgs/asatec.png" width="140" height="100">
+            <h3>Acompanhe seu processo</h3>
+            <br>
             <div class="form-group row">
                 <label for="email" class="sr-only">Email</label>
                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
@@ -41,7 +42,7 @@
                     <button type="submit" class="btn btn-lg btn-primary btn-block">
                         Login
                     </button>
-                    <a  href="/areacliente" class="btn btn-lg btn-asatec btn-block">
+                    <a  href="#" class="btn btn-lg btn-asatec btn-block">
                         Área do Cliente
                     </a>
 
