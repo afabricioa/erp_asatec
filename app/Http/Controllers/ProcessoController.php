@@ -12,15 +12,13 @@ use App\Noticias;
 use DateTime;
 use DB;
 
-class ProcessoController extends Controller
-{
+class ProcessoController extends Controller{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         //
     }
 
@@ -29,8 +27,7 @@ class ProcessoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         //
     }
 
@@ -50,9 +47,8 @@ class ProcessoController extends Controller
      * @param  \App\Processo  $processo
      * @return \Illuminate\Http\Response
      */
-    public function show(Processo $processo)
-    {
-        //
+    public function show(Processo $processo){
+        
     }
 
     /**
@@ -61,8 +57,7 @@ class ProcessoController extends Controller
      * @param  \App\Processo  $processo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Processo $processo)
-    {
+    public function edit(Processo $processo){
         //
     }
 
@@ -189,8 +184,7 @@ class ProcessoController extends Controller
      * @param  \App\Processo  $processo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Processo $processo)
-    {
+    public function destroy(Processo $processo){
         //
     }
 }

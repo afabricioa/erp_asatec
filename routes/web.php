@@ -25,6 +25,8 @@ Route::get('/restrita', 'PageController@restrita');
 
 Route::get('/areacliente', 'PageController@areacliente');
 
+Route::get('/showprocesso', 'PageController@showprocesso');
+
 Route::resource('cliente', 'ClienteController')->middleware('auth');
 
 Route::resource('empreendimento', 'EmpreendimentoController')->middleware('auth');

@@ -1,53 +1,45 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-    
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-   
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    
+@section('content')
 
-</head>
-<body>
+    <div id="paginaProcesso">
+        <ul class="descricao">
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Contrato com a Construtora</strong>
+                Got more entries that you love? Buy more entries anytime! Just hover on your favorite entry and click the Buy button
+            </li>
+            <li class="checkado">
+                <span><i class="fa fa-check"></i></span>
+                <strong>Documentação do Terreno</strong>
+            </li>
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Engenharia</strong>
+            </li>
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Documentação Pessoal</strong>
+                
+            </li>
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Conformidade da Caixa</strong>
+            </li>
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Entrevista</strong>
+            </li>
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Contrato com a Caixa</strong>
+            </li>
+            <li>
+                <span><i class="fa fa-check"></i></span>
+                <strong>Cartório 1</strong>
+            </li>
 
-
-    <div class="container mb-5 mt-3">
-        <table class="table table-striped table-bordered mydatatable">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Endereço</th>
-                    <th>Salário</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Nelma Layelle</td>
-                    <td>11111111</td>
-                    <td>fortaleza</td>
-                    <td>5000</td>
-                </tr>
-                <tr>
-                    <td>Antonio Fabricio</td>
-                    <td>121212121</td>
-                    <td>Fortaleza</td>
-                    <td>5000</td>
-                </tr>
-            </tbody>
-        </table>
+        </ul>
     </div>
-    
 
-    <script>
-        $('.mydatatable').DataTable();
-    </script>
-
-    
-</body>
-</html>
+@endsection

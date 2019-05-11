@@ -49,4 +49,8 @@ class PageController extends Controller
     public function areacliente(){
         return view('areacliente');
     }
+
+    public function showprocesso(){
+        return view('showprocesso');
+    }
 }
