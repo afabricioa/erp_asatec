@@ -19,7 +19,7 @@ class PageController extends Controller
         }
     }
     public function cliente(){
-        if(Auth::check()){
+        if(Auth::user()->isAdmin == 'admin'){
             return view('clientes.lista');
         }else{
             return view('restrita');

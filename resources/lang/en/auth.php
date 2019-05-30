@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Email ou senha estão incorretos.',
+    'failed' => 'Usuário ou senha estão incorretos.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

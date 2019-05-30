@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Processo;
 use App\Noticias;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Session;
 use DB;
 use DateTime;
@@ -21,7 +23,7 @@ class ClienteController extends Controller
      */
     public function index(){
 
-        if (Auth::check()) {
+        if (Auth::user()->isAdmin == 'admin') {
             $clientes = Cliente::get();
             return view('clientes.lista', ['clientes' => $clientes]);
         }else{
@@ -35,8 +37,10 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        if(Auth::check()){
+        if(Auth::user()->isAdmin == 'admin'){
             return view('clientes.cadastra');
+        }else{
+            return view('restrita');
         }
     }
 
@@ -56,16 +60,21 @@ class ClienteController extends Controller
             'endereco' => 'required',
             'estadocivil' => 'required',
             'profissao' => 'required',
+            'username' => 'required',
         ]);
 
         $cliente->create($request->all());
 
         $cpf = $request->input('cpf');
+        $nome = $request->input('nome');
+        $username = $request->input('username');
         $processo = array('cliente_cpf'=>$cpf);
         $contrato = array('cliente_cpf'=>$cpf);
-        
+        $usuario = array('name' => $nome, 'username' => $username, 'password' => Hash::make($cpf), 'isAdmin' => 'cliente');
+
         DB::table('processos')->insert($processo);
         DB::table('contratos')->insert($contrato);
+        DB::table('users')->insert($usuario);
         Session::flash('msg', 'Cliente cadastrado com sucesso!');
 
         return redirect()->route('cliente.index');
@@ -78,10 +87,14 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($cpf){
-        $cliente = Cliente::find($cpf);
-        $processo = Processo::find($cpf);
-        
-        return view('clientes.show', compact('cliente', 'processo'));
+        if(Auth::user()->isAdmin == 'admin'){
+            $cliente = Cliente::find($cpf);
+            $processo = Processo::find($cpf);
+            
+            return view('clientes.show', compact('cliente', 'processo'));
+        }else{
+            return view('restrita');
+        }
     }
 
     /**
@@ -91,9 +104,12 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($cpf){
-        $cliente = Cliente::find($cpf);
-       
-        return view('clientes.edit', compact('cliente'));
+        if(Auth::user()->isAdmin == 'admin'){
+            $cliente = Cliente::find($cpf);
+            return view('clientes.edit', compact('cliente'));
+        }else{
+            return view('restrita');
+        }
     }
 
     /**
@@ -104,25 +120,29 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $cpf){
-        $request->validate([
-            'nome' => 'required',
-            'cpf' => 'required',
-            'rg' => 'required',
-            'estadocivil' => 'required',
-            'endereco' => 'required',
-            'profissao' => 'required'
-        ]);
+        if(Auth::user()->isAdmin == 'admin'){
+            $request->validate([
+                'nome' => 'required',
+                'cpf' => 'required',
+                'rg' => 'required',
+                'estadocivil' => 'required',
+                'endereco' => 'required',
+                'profissao' => 'required'
+            ]);
 
-        $cliente = Cliente::find($cpf);
-        $cliente->nome = $request->get('nome');
-        $cliente->cpf = $request->get('cpf');
-        $cliente->rg = $request->get('rg');
-        $cliente->estadocivil = $request->get('estadocivil');
-        $cliente->endereco = $request->get('endereco');
-        $cliente->profissao = $request->get('profissao');
-        $cliente->save();
+            $cliente = Cliente::find($cpf);
+            $cliente->nome = $request->get('nome');
+            $cliente->cpf = $request->get('cpf');
+            $cliente->rg = $request->get('rg');
+            $cliente->estadocivil = $request->get('estadocivil');
+            $cliente->endereco = $request->get('endereco');
+            $cliente->profissao = $request->get('profissao');
+            $cliente->save();
 
-        return redirect()->route('cliente.show', $cpf)->with('msg', 'Cliente atualizado com sucesso!');
+            return redirect()->route('cliente.show', $cpf)->with('msg', 'Cliente atualizado com sucesso!');
+        }else{
+            return view('restrita');
+        }
     }
 
     /**

@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->middleware('auth');
 
 Route::get('/teste', 'PageController@teste');
 
@@ -34,8 +34,3 @@ Route::resource('empreendimento', 'EmpreendimentoController')->middleware('auth'
 Route::resource('processo', 'ProcessoController')->middleware('auth');
 
 Route::resource('contrato', 'ContratoController')->middleware('auth');
-
-Route::resource('noticia', 'NoticiaController')->middleware('auth');
-
-
-

@@ -40,6 +40,11 @@
             <div class="form-group">
                 <input type="text" name="profissao" class="form-control" placeholder="Ocupação">
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <input type="text" name="username" class="form-control" placeholder="Usuário">
+                </div>
+            </div>
 
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>

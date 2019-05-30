@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Noticias;
 use DateTime;
 use DB;
+use Session;
 
 class ProcessoController extends Controller{
     /**
@@ -47,8 +48,8 @@ class ProcessoController extends Controller{
      * @param  \App\Processo  $processo
      * @return \Illuminate\Http\Response
      */
-    public function show(Processo $processo){
-        
+    public function show($usuario){
+        return view('showprocesso');
     }
 
     /**

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Noticias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,13 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index(){
-        $noticias = Noticias::get()->sortKeysDesc();
-        return view('home', ['noticias' => $noticias]);
+        if (Auth::user()->isAdmin == 'admin') {
+            $noticias = Noticias::get()->sortKeysDesc();
+            return view('home', ['noticias' => $noticias]);
+        }else{
+            Auth::logout();
+            Session::flush();
+            return view('restrita');
+        }
     }
 }
