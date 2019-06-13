@@ -49,7 +49,10 @@ class ProcessoController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($usuario){
-        return view('showprocesso');
+        $cliente = Cliente::query()->where('username', 'LIKE', $usuario)->first();
+        $processo = Processo::find($cliente->cpf);
+
+        return view('showprocesso', compact('processo', 'cliente'));
     }
 
     /**
@@ -79,45 +82,55 @@ class ProcessoController extends Controller{
         if(empty($processo->asscontrato)){ 
             $processo->asscontrato = $request->get('contrato');
             $processo->dataass = $request->get('asscontrato');
+            
         }
 
         //condicional responsável por atualizar a descrição do objeto noticia
         if(!empty($request->get('contrato'))){
             $descricao = 'Contrato assinado na construtora. Empreendimento '.$contrato->empreendimento;
+            $processo->faseatual = "contrato";
         }
         //condicional responsável para que o valor da data anterior não anule no envio do formulário
         if(empty($processo->docterreno)){
             $processo->docterreno = $request->get('docterreno');
             $processo->dataterreno = $request->get('dataterreno');
+            
         }
         if(!empty($request->get('docterreno'))){
             $descricao = 'Documentos do terreno '.$contrato->quadra.$contrato->lote.' foram solicitados.';
+            $processo->faseatual = "docterreno";
         }
         
         if(empty($processo->engenharia)){
             $processo->engenharia = $request->get('engenharia');
             $processo->dataengenharia = $request->get('dataengenharia');
+            
         }
         if(!empty($request->get('engenharia'))){
             $descricao = 'Engenharia solicitada. Lote: '.$contrato->quadra.$contrato->lote;
+            $processo->faseatual = "engenharia";
         }
         
         
         if(empty($processo->docpessoal)){
             $processo->docpessoal = $request->get('docpessoal');
             $processo->datadocpessoal = $request->get('datadocpessoal');
+            
         }
         if(!empty($request->get('docpessoal'))){
             $descricao = 'Solicitado atualização de documentação pessoal. Cliente: '.$cliente->nome;
+            $processo->faseatual = "docpessoal";
         }
         
         if(empty($processo->conformidade)){
             $processo->conformidade = $request->get('conformidade');
             $processo->dataconformidade = $request->get('dataconformidade');
             
+            
         }
         if(!empty($request->get('conformidade'))){
             $descricao = 'Processo enviado para conformidade. Cliente: '.$cliente->nome;
+            $processo->faseatual = "conformidade";
         }
 
 
@@ -125,9 +138,11 @@ class ProcessoController extends Controller{
             $processo->entrevista = $request->get('entrevista');
             $processo->dataentrevista = $request->get('dataentrevista');
             
+            
         }
         if(!empty($request->get('entrevista'))){
             $descricao = 'Cliente marcado para entrevista com gerente da Caixa. Cliente: '.$cliente->nome;
+            $processo->faseatual = "entrevista";
         }
         
 
@@ -138,6 +153,7 @@ class ProcessoController extends Controller{
         }
         if(!empty($request->get('contratocaixa'))){
             $descricao = 'Contrato assinado na Caixa. Cliente: '.$cliente->nome;
+            $processo->faseatual = "contratocaixa";
         }
         
 
@@ -148,6 +164,7 @@ class ProcessoController extends Controller{
         }
         if(!empty($request->get('cartorio1'))){
             $descricao = 'Entrada nos documentos do cartório fase 1. Lote: '.$contrato->quadra.$contrato->lote;
+            $processo->faseatual = "cartorio1";
         }
         
 
@@ -158,18 +175,22 @@ class ProcessoController extends Controller{
         }
         if(!empty($request->get('obras'))){
             $descricao = 'Obras iniciadas. Casa: '.$contrato->quadra.$contrato->lote;
+            $processo->faseatual = "obras";
         }
         
 
         if(empty($processo->cartorio2)){
             $processo->cartorio2 = $request->get('cartorio2');
             $processo->datacartorio2 = $request->get('datacartorio2');
+            
         }
         if(!empty($request->get('cartorio2'))){
             $descricao = 'Entrada nos documentos do cartório fase final. Casa: '.$contrato->quadra.$contrato->lote;
+            $processo->faseatual = "cartorio2";
         }
         
         $processo->observacao = $request->get('avisos');
+        
         $processo->save();
 
         $dataEvento = new DateTime();

@@ -32,9 +32,10 @@ class LoginController extends Controller
 
     protected function authenticated() {
         if (Auth::user()->isAdmin == 'admin') {
-            return redirect()->route('contrato.index');
+            return redirect()->route('cliente.index');
         }else if(Auth::user()->isAdmin == 'cliente'){
             $usuario = Auth::user()->username;
+            
             return redirect()->route('processo.show', $usuario);
         }else{
             return redirect()->route('login')->with('msg', 'Você não tem permissão para acessar essa página');

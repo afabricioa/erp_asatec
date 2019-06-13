@@ -37,6 +37,7 @@ class CreateProcessosTable extends Migration
             $table->string('cartorio2')->nullable();
             $table->date('datacartorio2')->nullable();
             $table->string('observacao')->nullable();
+            $table->string('faseatual')->nullable();
             $table->timestamps();
         });
     }

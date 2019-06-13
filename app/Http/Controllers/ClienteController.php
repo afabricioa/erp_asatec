@@ -70,7 +70,11 @@ class ClienteController extends Controller
         $username = $request->input('username');
         $processo = array('cliente_cpf'=>$cpf);
         $contrato = array('cliente_cpf'=>$cpf);
-        $usuario = array('name' => $nome, 'username' => $username, 'password' => Hash::make($cpf), 'isAdmin' => 'cliente');
+
+        $pontuacoes = array(".", "-");
+        $cpfsenha = str_replace($pontuacoes, "", $cpf);
+
+        $usuario = array('name' => $nome, 'username' => $username, 'password' => Hash::make($cpfsenha), 'isAdmin' => 'cliente');
 
         DB::table('processos')->insert($processo);
         DB::table('contratos')->insert($contrato);
@@ -154,6 +158,9 @@ class ClienteController extends Controller
     public function destroy($cpf){
         $cliente = Cliente::find($cpf);
         $cliente->delete();
+        $usuario = User::query()->where('username', 'LIKE', $cliente->username)->first();
+        $usuarioExcluir = User::find($usuario->id);
+        $usuarioExcluir->delete();
 
         return redirect()->route('cliente.index')->with('msg', 'Cliente excluido com sucesso!');
         

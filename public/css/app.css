@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://use.fontawesome.com/releases/v5.8.1/css/all.css);
 
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
@@ -10995,8 +10996,8 @@ span a:hover{
   width: 90%;
   margin: 0 auto;
   height: auto;
-  align-content: center;
-  justify-content: center;
+  align-content: left;
+  justify-content: left;
   display: flex;
   font-family: 'Nunito', sans-serif;
 }
@@ -11101,11 +11102,162 @@ strong {
 
 .container-cliente {
   margin-top: 65px;
-  background-color: #5c6268;
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   padding-top: 50px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.steps{
+  display: block;
+}
+
+#sec-timeline{
+  position: relative;
+}
+
+#sec-timeline:before{
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #757575;
+}
+
+.sec-container{
+  width: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.sec-passo{
+  position: relative;
+  display: block;
+  min-height: 130px;
+}
+
+.sec-passo:before{
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #235f08;
+}
+
+.sec-step::after{
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f573";
+  font-size: 25px;
+  padding-top: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: -20px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #CCC;
+  border-radius: 50%;
+  background-color: #FFF;
+}
+
+.passo-conteudo{
+  position: relative;
+  margin-left: 50px;
+  padding-top: 0.6em;
+}
+
+.step-svg{
+  display: block;
+  position: absolute;
+  left: -30px;
+  height: 72px;
+  width: 72px;
+}
+
+.step-svg object{
+  margin-left: -20px;
+  margin-top: -50px;
+}
+
+.timeline_processo{
+  position: relative;
+  padding-left: 45px;
+  list-style: none;
+  display: block;
+}
+
+.timeline_processo:before{
+  display: inline-block;
+  content: '';
+  position: absolute;
+  top: 12%;
+  left: 25px;
+  width: 10px;
+  height: 100%;
+  margin: 2px;
+  background-color: #cac9c5;
+}
+
+.timeline_step{
+  position: relative;
+  display: list-item;
+  border-radius: .2rem;
+  min-height: 100px;
+  padding-bottom: 20px;
+}
+
+.timeline_step:before{
+  display: inline-block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  height: 100%;
+  margin: 2px;
+}
+
+.done:before{
+  width: 10px;
+  background-color: #0f12e4;
+  z-index: 1000;
+}
+
+.timeline_step_desc{
+  display: block;
+  width: 100%;
+  padding: .5rem .5rem .5rem .5rem;
+  margin-bottom: 5px;
+  background-color: #cce3f6;
+  border-radius: 2px;
+  margin-left: 20px;
+  min-height: 100px;
+}
+
+.timeline_step_icone{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2rem;
+  left: -30px;
+}
+
+.timeline_step_icone object{
+  position: absolute;
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  z-index: 1001;
+  left: -32px;
+  top: 0;
+}
+
+.timeline_step_desc.active{
+  border: 2px solid green;
 }
