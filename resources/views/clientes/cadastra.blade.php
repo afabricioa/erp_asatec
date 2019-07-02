@@ -45,7 +45,7 @@
                     <input type="text" name="username" class="form-control" placeholder="Usuário">
                 </div>
             </div>
-
+            
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>

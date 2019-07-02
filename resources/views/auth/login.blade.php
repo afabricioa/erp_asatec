@@ -71,7 +71,7 @@
                         </a>
                     @endif
             </div>
-            <p class="mt-5 mb-3 text-muted">ASATEC © 2019</p>
+            <p class="mt-5 mb-3 text-muted">© 2019. Construtora ASATEC</p>
         </form>
     </div>
 @endsection

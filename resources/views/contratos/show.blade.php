@@ -373,6 +373,7 @@
     
         var datacompleta = "{{ Carbon::parse($processo->dataass)->format('d/m/Y') }}";
         
+        //checa se há valor da assinatura do contrato no banco, caso sim os valores são mostrados, caso não é necessário inserir a data de assinatura
         if(!!"{{ $processo->asscontrato }}"){
             document.getElementById("contrato").checked = true;
             $('#dataassinada').append("Data assinatura: {{ Carbon::parse($processo->dataass)->format('d/m/Y') }}");

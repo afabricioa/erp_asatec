@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Support\Facades\Input; 
+use App\Processo;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,7 +28,24 @@ Route::get('/restrita', 'PageController@restrita');
 
 Route::get('/areacliente', 'PageController@areacliente');
 
-Route::get('/showprocesso', 'PageController@showprocesso');
+//Route::get('/showprocesso', 'PageController@showprocesso');
+
+/*Route::any('/buscar', function () {
+    $cpf = Input::get('cpf');
+    $processo = Processo::where('cliente_cpf', 'LIKE', $cpf)->first();
+
+    if($cpf){
+        if(count($processo) > 0){
+            return view('showprocesso')->withDetails($processo)->withQuery($cpf);
+        }else{ 
+            return view ('areacliente')->withMessage('Nenhum processo foi encontrado com o CPF fornecido!');
+        }
+    }else{
+        return view('areacliente');
+    }
+});*/
+
+Route::any('/buscar', 'AcompanhamentoController@buscar');
 
 Route::resource('cliente', 'ClienteController')->middleware('auth');
 

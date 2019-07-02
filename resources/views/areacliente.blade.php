@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="text-center">
-        @if(Session::has('msg'))
-            <div class="modal fade" id="modalExclusao" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+        @if(isset($message))
+            <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -13,7 +13,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            {{ Session::get('msg') }}
+                            {{ $message }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -22,47 +22,29 @@
                 </div>
             </div>
         @endif
-        <form id="formulario" method="POST" action="{{ route('login') }}">
+        <form id="formulario" method="POST" action="/buscar" role="search">
             @csrf
             <h4>Acompanhamento do Processo</h4>
             <div class="form-group row">
-                <label for="email" class="sr-only">Email</label>
-                <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
+                <label for="cpf" class="sr-only">cpf</label>
+                <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf') }}" placeholder="CPF" required autofocus>
 
-                @if ($errors->has('email'))
+                @if ($errors->has('cpf'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('email') }}</strong>
+                        <strong>{{ $errors->first('cpf') }}</strong>
                     </span>
                 @endif
             </div>
-
-            <div class="form-group row">
-                <label for="password" class="sr-only">Senha</label>
-                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Senha" required>
-
-                @if ($errors->has('password'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-
-            <div class="form-group row">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                    <label class="form-check-label" for="remember">
-                        Lembrar
-                    </label>
-                </div>
-            </div>
-
             <div class="form-group row">
                 <button type="submit" class="btn btn-lg btn-primary btn-block">
-                    Login
+                    Visualizar
                 </button>
             </div>
-            <p class="mt-5 mb-3 text-muted">ASATEC © 2019</p>
+            <p class="mt-5 mb-3 text-muted">© 2019. Construtora ASATEC</p>
         </form>
     </div>
+
+    <script>
+        $('#modalErro').modal('show');
+    </script>
 @endsection
