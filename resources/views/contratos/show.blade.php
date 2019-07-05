@@ -29,7 +29,8 @@
             <p class="card-text">Empreendimento: {{ $contrato->empreendimento }}</p>
             <p class="card-text">Corretor: {{ $contrato->corretor }}</p>
             <p class="card-text">Endereço: {{ $contrato->endereco }}</p>
-            <p class="card-text">Lote: {{ $contrato->quadra }}{{ $contrato->lote }}</p>
+            <p class="card-text">Lote: {{ $contrato->quadra }}-{{ $contrato->lote }}</p>
+            <hr>
             <div class="row">
                 <div class="col-sm-4">
                     <p class="card-text">Planta(m²): {{ $contrato->planta }}m²</p>
@@ -453,7 +454,7 @@
 
         if(!!"{{ $processo->cartorio1 }}"){
             document.getElementById("cartorio1").checked = true;
-            $('#datacartorio1ok').append("Data assinatura: {{ Carbon::parse($processo->cartorio1)->format('d/m/Y') }}"); 
+            $('#datacartorio1ok').append("Data assinatura: {{ Carbon::parse($processo->datacartorio1)->format('d/m/Y') }}"); 
         }else{
             $('input:radio[name="cartorio1"]').change(function(){
                 if(this.checked){

@@ -71,24 +71,30 @@
                     <p>Data</p>
                 </li>
             </ul> --}}
+            
             <div class="descricao">
-                <h3 class="titulo">
-                    Cliente: {{ $cliente->nome }}
-                </h3>
+                <h4 class="titulo-secao">Meu processo</h4>
+                <h5>
+                    <p>Cliente: {{ $cliente->nome }}
+                    <p>CPF: {{ $cliente->cpf }}
+                    <p>Loteamento {{ $contrato->empreendimento }}
+                    <p>Imóvel: {{ $contrato->quadra }}-{{$contrato->lote  }}
+                </h5>
                 <div class="row flex flex-wrap flex-spaced-fixed margin-bottom">
                     <div class="col-md-6">
                         <div class="descProcesso">
-                            Situação: <span id="fase"></span>
+                            Situação: <span class="spanDesc" id="fase"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="descProcesso">
-                            Início do Processo: <span>{{ Carbon::parse($processo->dataass)->format('d/m/Y') }}</span>
+                            Início do Processo: <span class="spanDesc">{{ Carbon::parse($processo->dataass)->format('d/m/Y') }}</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="steps">
+                <h5 class="titulo-historico">Resumo do processo</h5>
                 <ul class="timeline_processo">
                     <li id="contrato_step" class="timeline_step">
                         <div class="timeline_step_icone">
@@ -97,7 +103,7 @@
                         <div id="desc_contrato" class="timeline_step_desc">
                             <p class="negrito">Assinatura do Contrato na Construtora
                             @if($processo->dataass != NULL)
-                                <p>Data: {{ Carbon::parse($processo->dataass)->format('d/m/Y') }}
+                                <p>{{ Carbon::parse($processo->dataass)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -108,7 +114,7 @@
                         <div id="desc_documentos" class="timeline_step_desc">
                             <p class="negrito">Documentação do Terreno
                             @if($processo->dataterreno != NULL)
-                                <span>Data: {{ Carbon::parse($processo->dataterreno)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->dataterreno)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>   
@@ -119,7 +125,7 @@
                         <div id="desc_engenharia" class="timeline_step_desc">
                             <p class="negrito">Avaliação da Engenharia
                             @if($processo->dataengenharia != NULL)
-                                <span>Data: {{ Carbon::parse($processo->dataengenharia)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->dataengenharia)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -130,7 +136,7 @@
                         <div id="desc_pessoal" class="timeline_step_desc">
                             <p class="negrito">Atualização de documentação pessoal
                             @if($processo->datadocpessoal != NULL)
-                                <span>Data: {{ Carbon::parse($processo->datadocpessoal)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->datadocpessoal)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -141,7 +147,7 @@
                         <div id="desc_conformidade" class="timeline_step_desc">
                             <p class="negrito">Conformidade da Caixa
                             @if($processo->dataconformidade != NULL)
-                                <span>Data: {{ Carbon::parse($processo->dataconformidade)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->dataconformidade)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -152,7 +158,7 @@
                         <div id="desc_entrevista" class="timeline_step_desc">
                             <p class="negrito">Entrevista com Gerente da Caixa
                             @if($processo->dataentrevista != NULL)
-                                <span>Data: {{ Carbon::parse($processo->dataentrevista)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->dataentrevista)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -163,7 +169,7 @@
                         <div id="desc_ccaixa" class="timeline_step_desc">
                             <p class="negrito">Assinatura do Contrato da Caixa
                             @if($processo->datacaixa != NULL)
-                                <span>Data: {{ Carbon::parse($processo->datacaixa)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->datacaixa)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -174,7 +180,7 @@
                         <div id="desc_cartorio1" class="timeline_step_desc">
                             <p class="negrito">Entrada de Documentos no Cartório
                             @if($processo->datacartorio1 != NULL)
-                                <span>Data: {{ Carbon::parse($processo->datacartorio1)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->datacartorio1)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
                     </li>
@@ -185,9 +191,12 @@
                         <div id="desc_pessoal" class="timeline_step_desc">
                             <p class="negrito">Entrada de documentos na Prefeitura
                             @if($processo->datacartorio2 != NULL)
-                                <span>Data: {{ Carbon::parse($processo->datacartorio2)->format('d/m/Y') }}</span>
+                                <p>{{ Carbon::parse($processo->datacartorio2)->formatLocalized('%d de %B de %Y') }}
                             @endif
                         </div>
+                    </li>
+                    <li id="final_step" class="timeline_step">
+                        <object id="svgCasa" class="done" data="svg/casa.svg" type="image/svg+xml"></object>
                     </li>
                 </ul>
             </div>
@@ -252,6 +261,15 @@
                 svgObject.getElementById('ponto2').setAttribute("fill", "#369648");
                 svgObject.getElementById('ponto3').setAttribute("fill", "#369648");
                 $('#prefeitura_step').addClass('done');
+            }
+            if("{{ $processo->faseatual }}" == "concluido"){
+                svgObject = document.getElementById('svgCasa').contentDocument;
+                svgObject.getElementById('base').setAttribute("fill", "#221f61");
+                svgObject.getElementById('base').setAttribute("stroke", "#221f61");
+                svgObject.getElementById('telhado').setAttribute("stroke", "#F68B23");
+                svgObject.getElementById('chamine').setAttribute("fill", "#F68B23");
+                svgObject.getElementById('janela').setAttribute("fill", "#369648");
+                svgObject.getElementById('porta').setAttribute("fill", "#fff");
             }
         };
 

@@ -24,7 +24,7 @@
         @endif
         <form id="formulario" method="POST" action="{{ route('login') }}">
             @csrf
-            <img class="mb-4" src="/../imgs/asatec.png" width="140" height="100">
+            <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100">
             <div class="form-group row">
                 <label for="email" class="sr-only">Email</label>
                 <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
@@ -47,7 +47,7 @@
                 @endif
             </div>
 
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -55,7 +55,7 @@
                         Lembrar
                     </label>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="form-group row">
                     <button type="submit" class="btn btn-lg btn-primary btn-block">
@@ -65,11 +65,11 @@
                         Área do Cliente
                     </a>
 
-                    @if (Route::has('password.request'))
+                    {{-- @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                             Esqueceu a senha?
                         </a>
-                    @endif
+                    @endif --}}
             </div>
             <p class="mt-5 mb-3 text-muted">© 2019. Construtora ASATEC</p>
         </form>

@@ -26,9 +26,13 @@
             Dados cadastrados do cliente
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ $cliente->nome }}</h5>
+            <p class="titulo-detalhes">Dados Básicos
+            <br>
+            <p class="card-text">Nome: {{ $cliente->nome }}</p>
             <p class="card-text">CPF: {{ $cliente->cpf }}</p>
             <p class="card-text">RG: {{ $cliente->rg }}</p>
+            <hr>
+            <p>
             <p class="card-text">Endereço: {{ $cliente->endereco }}</p>
             <p class="card-text">Estado Civil: {{ $cliente->estadocivil }}</p>
             <p class="card-text">Ocupação: {{ $cliente->profissao }}</p>

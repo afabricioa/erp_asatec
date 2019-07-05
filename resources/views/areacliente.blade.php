@@ -24,6 +24,7 @@
         @endif
         <form id="formulario" method="POST" action="/buscar" role="search">
             @csrf
+            <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100">
             <h4>Acompanhamento do Processo</h4>
             <div class="form-group row">
                 <label for="cpf" class="sr-only">cpf</label>

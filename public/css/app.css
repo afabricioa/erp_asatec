@@ -51,6 +51,7 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  height: 100%;
 }
 
 article,
@@ -76,7 +77,8 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .3)), center no-repeat;
+  background-attachment: fixed;
 }
 
 [tabindex="-1"]:focus {
@@ -595,6 +597,12 @@ pre code {
 
 .mydatatable input{
   border-radius: 3px;
+}
+
+@media (max-width: 400px){
+  #paginaProcesso{
+    font-size: 9px;
+  }
 }
 
 @media (min-width: 576px) {
@@ -1634,14 +1642,14 @@ pre code {
 }
 
 .table thead tr th{
-  background-color: var(--asatec);
-  color: #fff;
+  background-color: transparent;
+  color: #000;
 }
 .table th,
 .table td {
   padding: 0.75rem;
   vertical-align: top;
-  border-top: 1px solid #dee2e6;
+  /* border-top: 1px solid #dee2e6; */
 }
 
 .table td a{
@@ -1655,7 +1663,7 @@ pre code {
 
 .table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #dee2e6;
+  border-bottom: 2px solid var(--asatec);
 }
 
 .table tbody + tbody {
@@ -4800,10 +4808,10 @@ input[type=button].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
+  font-family: Bommer Slab,Trebuchet MS,Arial,Helvetica,sans-serif;
 }
 
 .card > hr {
@@ -4824,6 +4832,7 @@ input[type=button].btn-block {
 .card-body {
   flex: 1 1 auto;
   padding: 1.25rem;
+  background-color: #fff;
 }
 
 .card-title {
@@ -10579,7 +10588,7 @@ a.text-dark:focus {
 }
 
 .text-muted {
-  color: #6c757d !important;
+  color: #393b3d !important;
 }
 
 .text-black-50 {
@@ -10979,7 +10988,6 @@ ul ul a {
   position: relative;
   padding: 1rem;
   margin: 1rem -15px 0;
-  border: solid #f8f9fa;
   border-width: .2rem 0 0;
 }
 
@@ -11207,14 +11215,15 @@ strong {
   display: inline-block;
   content: '';
   position: absolute;
-  top: 2%;
+  top: 0;
   left: 70px;
   width: 10px;
-  height: 100%;
+  height: 80%;
   margin: 2px;
   background-color: #cac9c5;
   z-index: 1000;
 }
+
 
 .timeline_step{
   position: relative;
@@ -11226,16 +11235,25 @@ strong {
 }
 
 .timeline_step:not(:last-child){
-  padding-bottom: .5rem;
+  padding-bottom: .1rem;
+}
+
+.timeline_step:last-child{
+  background-color: transparent;
+  z-index: 1003;
+}
+.timeline_step:last-child object{
+  margin-top: -100px;
+  margin-left: -103px;
 }
 
 .timeline_step:before{
   display: inline-block;
   content: '';
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 25px;
-  height: 100%;
+  height: 115%;
   margin: 2px;
 }
 
@@ -11271,7 +11289,7 @@ strong {
   height: 6rem;
   z-index: 1001;
   left: -31px;
-  top: 0;
+  top: -23px;
 }
 
 .timeline_step_desc.active{
@@ -11280,14 +11298,15 @@ strong {
 
 .descProcesso{
   display: block;
-  background-color: #e2e2e2;
+  background-color: #221f61;
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 4px;
+  color: #fff;
 }
 
-#paginaProcesso span{
-  font-weight: bold;
+.spanDesc{
+  font-weight: 600;
 }
 
 .descricao{
@@ -11299,7 +11318,45 @@ strong {
   margin: 50px auto; /* centraliza */
 }
 
-.titulo{
-  margin-top: 1rem!important;
-  border-bottom: 2px solid black;
+
+.titulo-secao{
+  font-family: Yanone Kaffeesatz,sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  line-height: 1.1;
+  border-bottom: 2px solid var(--asatec);
+  color: var(--asatec);
 }
+
+.titulo-listas{
+  width: 420px;
+  font-family: Yanone Kaffeesatz,sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  line-height: 1.1;
+  border-bottom: 2px solid var(--asatec);
+}
+
+.titulo-historico{
+  margin: 50px;
+  font-family: Yanone Kaffeesatz,sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  line-height: 1.1;
+}
+
+.titulo-detalhes{
+  font-family: Yanone Kaffeesatz,sans-serif;
+  font-weight: 700;
+  letter-spacing: .15rem;
+  line-height: 1.1;
+  color: #221f61;
+  margin-bottom: 5px;
+}
+
+#paginaProcesso img{
+  margin: 50px 40%;
+} 
