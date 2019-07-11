@@ -11430,14 +11430,14 @@
 			 *    $(document).ready( function() {
 			 *      $('.listaclientes').dataTable( {
 			 *        "language": {
-			 *          "emptyTable": "Nenhum dado disponivel"
+			 *          "emptyTable": "Nenhum registro cadastrado."
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "Nenhum dado disponivel",
+			"sEmptyTable": "Nenhum registro cadastrado.",
 	
-	
+					
 			/**
 			 * This string gives information to the end user about the information
 			 * that is current on display on the page. The following tokens can be

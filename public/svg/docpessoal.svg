@@ -4,7 +4,7 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100px"
 	 height="130px" viewBox="0 0 70 100" enable-background="new 0 0 70 100" xml:space="preserve">
 <g id="docpessoal">
-	<ellipse id="circuloDocpessoal" fill="#cac9c5" cx="35.53" cy="46.926" rx="25.272" ry="24.813" width="100px" height="130px"/>
+	<ellipse id="circuloDocpessoal" fill="#cac9c5" cx="35.53" cy="46.926" rx="25.272" ry="24.813"/>
 </g>
 <g id="documento">
 	<g>

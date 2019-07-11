@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" ></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+    <script src="{{ asset('js/datatable/jquery-3.3.1.js') }}"></script>
     {{-- <script src="{{ asset('js/bootstrap.js') }}" ></script> --}}
     
     <!-- Datatable --> 
@@ -105,7 +106,7 @@
                                 <li>
                                     <a href="/">
                                         <i class="fas fa-home"></i>
-                                        Home
+                                        Início
                                     </a>
                                 </li>
                                 <li class="active">
@@ -115,15 +116,21 @@
                                     </a>
                                     <ul class="collapse list-unstyled" id="menuCliente">
                                         <li>
-                                            <a href="{{ route('cliente.create') }}">Cadastrar</a>
+                                            <a href="{{ route('cliente.create') }}">
+                                                <i class="fas fa-user-plus"></i>
+                                                Cadastrar
+                                            </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('cliente.index')}}">Listar</a>
+                                            <a href="{{ route('cliente.index')}}">
+                                                <i class="fas fa-list"></i>
+                                                Listar
+                                            </a>
                                         </li>
                                     </ul>
                                 </li>
 
-                                <li>
+                                <li class="desabilitado">
                                     <a href="{{ route('empreendimento.index')}}">
                                         <i class="fas fa-city"></i>
                                         Empreendimento

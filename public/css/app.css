@@ -2337,7 +2337,7 @@ textarea.form-control.is-valid {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 80%;
-  color: #e3342f;
+  color: var(--asatec);
 }
 
 .invalid-tooltip {
@@ -2625,6 +2625,7 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
 }
 
+
 .btn-secondary {
   color: #fff;
   background-color: #6c757d;
@@ -2893,8 +2894,13 @@ fieldset:disabled a.btn {
 
 .btn-asatec {
   color: #fff;
-  background-color: #f49332;
-  border-color: #ee8720;
+  background-color: #f3923b;
+  border-color: #f3923b;
+}
+.btn-asatec-azul {
+  color: #fff;
+  background-color: #221f61;
+  border-color: #221f61;
 }
 
 .btn-asatec:hover {
@@ -6123,6 +6129,7 @@ a.close.disabled {
   border-bottom: 1px solid #dee2e6;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
+  background-color: var(--asatec);
 }
 
 .modal-header .close {
@@ -6149,6 +6156,7 @@ a.close.disabled {
   border-top: 1px solid #dee2e6;
   border-bottom-right-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
+  background-color: var(--asatec);
 }
 
 .modal-footer > :not(:first-child) {
@@ -10735,6 +10743,11 @@ a.text-dark:focus {
   background-color: var(--asatec);
 }
 
+.desabilitado{
+    pointer-events:none; /*Faz ficar desabilitado*/
+    opacity:0.6;        
+}
+
 #formulario{
   width: 100%;
   max-width: 400px;
@@ -10769,14 +10782,14 @@ a.text-dark:focus {
   min-width: 200px;
   max-width: 200px;
   min-height: 100vh;
-  background: #7386D5;
+  background: #221f61;
   color: #fff;
   transition: all 0.3s;
 }
 
 #sidebar .sidebar-header{
   padding: 10px;
-  background: #c0dbf1;
+  background: #212529;
   border-bottom: 1px solid #f1851f;
   text-align: center;
 }
@@ -10856,7 +10869,7 @@ a, a:hover, a:focus {
 }
 
 #sidebar ul li a:hover {
-  color: #7386D5;
+  color: var(--asatec);
   background: #fff;
 }
 
@@ -10884,12 +10897,12 @@ a[data-toggle="collapse"] {
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
   color: #fff;
-  background: #6d7fcc;
+  background: #221f61;
 }
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #6d7fcc;
+  background: #221f61;
 }
 
 #dismiss{
@@ -11218,7 +11231,7 @@ strong {
   top: 0;
   left: 70px;
   width: 10px;
-  height: 80%;
+  height: 90%;
   margin: 2px;
   background-color: #cac9c5;
   z-index: 1000;
@@ -11232,6 +11245,11 @@ strong {
   min-height: 75px;
   background-color: #e2e2e2;
   margin-bottom: 15px;
+}
+
+.timeline_step.active{
+  background-color: #221f61;
+  color: #fff;
 }
 
 .timeline_step:not(:last-child){
@@ -11289,7 +11307,7 @@ strong {
   height: 6rem;
   z-index: 1001;
   left: -31px;
-  top: -23px;
+  top: -22px;
 }
 
 .timeline_step_desc.active{

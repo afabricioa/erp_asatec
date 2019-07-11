@@ -18,10 +18,10 @@ class CreateContratosTable extends Migration
             $table->foreign('cliente_cpf')->references('cpf')->on('clientes')->onDelete('cascade');
             $table->string('corretor')->nullable();
             $table->string('empreendimento')->nullable();
-            $table->string('quadra')->nullable();
             $table->string('lote')->nullable();
             $table->double('planta')->nullable();
             $table->string('endereco')->nullable();
+            $table->string('tipodacasa')->nullable();
             $table->double('tamanhoLote')->nullable();
             $table->double('valorLote')->nullable();
             $table->double('valorPlanta')->nullable();

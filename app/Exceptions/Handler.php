@@ -44,15 +44,19 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
-    {
+    public function render($request, Exception $exception){
         if($this->isHttpException($exception)){
             switch ($exception->getStatusCode()) {
                 case 404:
                     return redirect()->guest('/');
                     break;
-                
-                case '500':
+                case 419:
+                    return redirect()->guest('/');
+                    break;
+                case 429:
+                    return redirect()->guest('/');
+                    break;
+                case 500:
                     return redirect()->guest('/');
                     break;
 

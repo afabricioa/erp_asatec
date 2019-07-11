@@ -128,9 +128,46 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'cpf' => [
+            'required' => 'É necessário fornecer um CPF.',
+            'unique' => 'O CPF já foi cadastrado no sistema.',
         ],
+        'rg' => [
+            'required' => 'É necessário fornecer um RG.',
+            'unique' => 'O RG já foi cadastrado no sistema.',
+        ],
+        'nome' => [
+            'required' => 'Campo vazio. Digite o nome do cliente.',
+        ],
+        'profissao' => [
+            'required' => 'Campo vazio. Digite a ocupação.',
+        ],
+        'endereco' => [
+            'required' => 'Digite o endereço do cliente.',
+        ],
+        'lote' => [
+            'required' => 'Digite o lote.',
+        ],
+        'corretor' => [
+            'required' => 'Digite o nome do corretor.',
+        ],
+        'empreendimento' => [
+            'required' => 'Digite o nome do Empreendimento.',
+        ],
+        'planta' => [
+            'required' => 'Digite o tamanho da planta.',
+        ],
+        'tamanhoLote' => [
+            'required' => 'Digite o tamanho do lote.',
+        ],
+        'valorPlanta' => [
+            'required' => 'Digite o valor da planta.',
+        ],
+        'valorLote' => [
+            'required' => 'Digite o valor do lote.',
+        ],
+
+
     ],
 
     /*

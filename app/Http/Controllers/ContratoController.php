@@ -83,24 +83,25 @@ class ContratoController extends Controller
         $request->validate([
             'corretor' =>'required',
             'empreendimento' => 'required',
-            'quadra' => 'required',
             'lote' => 'required',
             'planta' => 'required',
             'endereco' => 'required',
+            'tipodacasa' => 'required',
             'tamanhoLote' => 'required',
             'valorLote' => 'required',
             'valorPlanta' => 'required'
         ]);
-
+        
         $contrato->corretor = $request->get('corretor');
         $contrato->empreendimento = $request->get('empreendimento');
-        $contrato->quadra = $request->get('quadra');
         $contrato->lote = $request->get('lote');
         $contrato->planta = $request->get('planta');
         $contrato->endereco = $request->get('endereco');
+        $contrato->tipodacasa = $request->get('tipodacasa');
         $contrato->tamanhoLote = $request->get('tamanhoLote');
         $contrato->valorLote = $request->get('valorLote');
         $contrato->valorPlanta = $request->get('valorPlanta');
+
         $contrato->save();
 
         $dataEvento = new DateTime();

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contrato extends Model{
     protected $fillable = [
-        'cliente_cpf', 'corretor', 'empreendimento', 'quadra', 'lote', 'planta', 'endereco', 'tamanhoLote', 'valorLote', 'valorPlanta',
+        'cliente_cpf', 'corretor', 'empreendimento', 'quadra', 'lote', 'planta', 'endereco', 'tipodacasa', 'tamanhoLote', 'valorLote', 'valorPlanta',
     ];
 
     protected $primaryKey = 'cliente_cpf';

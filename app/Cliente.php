@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     protected $fillable = [
-        'nome', 'cpf', 'rg', 'endereco', 'estadocivil', 'profissao', 'username',
+        'nome', 'cpf', 'rg', 'endereco', 'estadocivil', 'profissao',
     ];
 
     protected $primaryKey = 'cpf';

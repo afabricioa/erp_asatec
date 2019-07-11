@@ -78,7 +78,7 @@
                     <p>Cliente: {{ $cliente->nome }}
                     <p>CPF: {{ $cliente->cpf }}
                     <p>Loteamento {{ $contrato->empreendimento }}
-                    <p>Imóvel: {{ $contrato->quadra }}-{{$contrato->lote  }}
+                    <p>Imóvel: {{$contrato->lote  }}
                 </h5>
                 <div class="row flex flex-wrap flex-spaced-fixed margin-bottom">
                     <div class="col-md-6">
@@ -278,6 +278,7 @@
         
         if(valorFase == "terreno_step"){
             faseatual = "Documentação do Terreno";
+            $('#terreno_step').toggleClass('active');
         }else if(valorFase == "engenharia_step"){
             faseatual = "Engenharia da Caixa";
         }else if(valorFase == "docpessoal_step"){

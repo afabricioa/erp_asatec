@@ -55,33 +55,31 @@ class ClienteController extends Controller
 
         $request->validate([
             'nome' => 'required',
-            'cpf' => 'required',
-            'rg' => 'required',
+            'cpf' => ['max:14', 'unique:clientes'],
+            'rg' => ['max:9', 'unique:clientes'],
             'endereco' => 'required',
             'estadocivil' => 'required',
             'profissao' => 'required',
-            'username' => 'required',
         ]);
 
         $cliente->create($request->all());
 
         $cpf = $request->input('cpf');
-        $nome = $request->input('nome');
-        $username = $request->input('username');
+        $nome = $request->input('nome');    
         $processo = array('cliente_cpf'=>$cpf);
         $contrato = array('cliente_cpf'=>$cpf);
 
         $pontuacoes = array(".", "-");
         $cpfsenha = str_replace($pontuacoes, "", $cpf);
 
-        $usuario = array('name' => $nome, 'username' => $username, 'password' => Hash::make($cpfsenha), 'isAdmin' => 'cliente');
+        //$usuario = array('name' => $nome, 'username' => $username, 'password' => Hash::make($cpfsenha), 'isAdmin' => 'cliente');
 
         DB::table('processos')->insert($processo);
         DB::table('contratos')->insert($contrato);
-        DB::table('users')->insert($usuario);
+        //DB::table('users')->insert($usuario);
         Session::flash('msg', 'Cliente cadastrado com sucesso!');
 
-        return redirect()->route('cliente.index');
+        return redirect()->route('contrato.show', $cpf);
     }
 
     /**
@@ -158,9 +156,9 @@ class ClienteController extends Controller
     public function destroy($cpf){
         $cliente = Cliente::find($cpf);
         $cliente->delete();
-        $usuario = User::query()->where('username', 'LIKE', $cliente->username)->first();
-        $usuarioExcluir = User::find($usuario->id);
-        $usuarioExcluir->delete();
+        // $usuario = User::query()->where('username', 'LIKE', $cliente->username)->first();
+        // $usuarioExcluir = User::find($usuario->id);
+        // $usuarioExcluir->delete();
 
         return redirect()->route('cliente.index')->with('msg', 'Cliente excluido com sucesso!');
         

@@ -19,7 +19,6 @@ class CreateClientesTable extends Migration
             $table->string('endereco');
             $table->string('estadocivil');
             $table->string('profissao');
-            $table->string('username');
             $table->timestamps();
         });
     }

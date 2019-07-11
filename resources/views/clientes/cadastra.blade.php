@@ -17,14 +17,31 @@
         <form method="POST" action="{{ route('cliente.store') }}">
             @csrf
             <div class="form-group">
-                <input type="text" name="nome" class="form-control" placeholder="Nome" required>
+                <input type="text" name="nome" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" placeholder="Nome">
+                
+                @if ($errors->has('nome'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('nome') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <input type="text" name="cpf" class="form-control" placeholder="CPF" maxlength="14" OnKeyPress="validar('###.###.###-##',this)">
+                    <input type="text" name="cpf" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ old('cpf') }}" placeholder="CPF" maxlength="14" OnKeyPress="validar('###.###.###-##',this)">
+                    
+                    @if ($errors->has('cpf'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('cpf') }}</strong>
+                        </span>
+                    @endif
                 </div>
                 <div class="form-group col-md-4">
-                    <input type="text" name="rg" class="form-control" placeholder="RG" maxlength="9" OnKeyPress="validar('#.###.###', this)">
+                    <input type="text" name="rg" class="form-control{{ $errors->has('rg') ? ' is-invalid' : '' }}" placeholder="RG" maxlength="9" OnKeyPress="validar('#.###.###', this)">
+                    @if ($errors->has('rg'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('rg') }}</strong>
+                        </span>
+                    @endif
                 </div>
                 <div class="form-group col-sm-4">
                     <select name="estadocivil" class="form-control form-control-md">
@@ -35,17 +52,21 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="text" name="endereco" class="form-control" placeholder="Endereço">
+                <input type="text" name="endereco" class="form-control{{ $errors->has('endereco') ? ' is-invalid' : '' }}" placeholder="Endereço">
+                @if ($errors->has('endereco'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('endereco') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-group">
-                <input type="text" name="profissao" class="form-control" placeholder="Ocupação">
+                <input type="text" name="profissao" class="form-control{{ $errors->has('profissao') ? ' is-invalid' : '' }}" placeholder="Ocupação">
+                @if ($errors->has('profissao'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('profissao') }}</strong>
+                    </span>
+                @endif
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <input type="text" name="username" class="form-control" placeholder="Usuário">
-                </div>
-            </div>
-            
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>
     </div>
