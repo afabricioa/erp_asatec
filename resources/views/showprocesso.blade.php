@@ -95,6 +95,7 @@
             </div>
             <div class="steps">
                 <h5 class="titulo-historico">Resumo do processo</h5>
+                <div class="atualizacao"><p class="negrito">Última atualização no processo:</p> {{ $processo->observacao }}</div>
                 <ul class="timeline_processo">
                     <li id="contrato_step" class="timeline_step">
                         <div class="timeline_step_icone">
@@ -204,7 +205,6 @@
     @endif
 
     <script> 
-        $('#modalErro').modal('show');
 
         //função para preencher os icones/objetos com cores demonstrando a fase atual
         window.onload=function() {
@@ -281,20 +281,28 @@
             $('#terreno_step').toggleClass('active');
         }else if(valorFase == "engenharia_step"){
             faseatual = "Engenharia da Caixa";
+            $('#engenharia_step').toggleClass('active');
         }else if(valorFase == "docpessoal_step"){
             faseatual = "Documentação Pessoal";
+            $('#docpessoal_step').toggleClass('active');
         }else if(valorFase == "conformidade_step"){
             faseatual = "Conformidade da CAIXA";
+            $('#conformidade_step').toggleClass('active');
         }else if(valorFase == "entrevista_step"){
             faseatual = "Entrevista da CAIXA";
+            $('#entrevista_step').toggleClass('active');
         }else if(valorFase == "ccaixa_step"){
             faseatual = "Contrato da CAIXA";
+            $('#ccaixa_step').toggleClass('active');
         }else if(valorFase == "cartorio1_step"){
             faseatual = "Documentação de Cartório";
+            $('#cartorio1_step').toggleClass('active');
         }else if(valorFase == "obras_step"){
             faseatual = "Ínicio das Obras";
+            $('#obras_step').toggleClass('active');
         }else if(valorFase == "prefeitura_step"){
             faseatual = "Documentação na Prefeitura";
+            $('#prefeitura_step').toggleClass('active');
         }
 
         $("#fase").text(faseatual);

@@ -10,6 +10,7 @@ use DB;
 use DateTime;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ContratoController extends Controller
 {
@@ -48,13 +49,19 @@ class ContratoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($cpf){
-        $contrato = Contrato::find($cpf);
-        $cliente = Cliente::find($cpf);
-        $processo = Processo::find($cpf);
-        if(empty($contrato->empreendimento)){
-            return redirect()->route('contrato.edit', $contrato->cliente_cpf);
-        }else{
-            return view('contratos.show', compact('contrato', 'cliente', 'processo'));
+        try{
+            $processo = Processo::where('cliente_cpf', $cpf)->firstOrFail();
+            $cliente = Cliente::where('cpf', $cpf)->firstOrFail();
+            $contrato = Contrato::where('cliente_cpf', $cpf)->firstOrFail();
+
+            if(empty($contrato->empreendimento)){
+                return redirect()->route('contrato.edit', $contrato->cliente_cpf);
+            }else{
+                return view('contratos.show', compact('contrato', 'cliente', 'processo'));
+            }
+            
+        }catch(ModelNotFoundException $e){
+            return redirect()->route('contrato.index');
         }
         
     }
@@ -89,7 +96,9 @@ class ContratoController extends Controller
             'tipodacasa' => 'required',
             'tamanhoLote' => 'required',
             'valorLote' => 'required',
-            'valorPlanta' => 'required'
+            'valorPlanta' => 'required',
+            'entrada' => 'required',
+            'muro' => 'required'
         ]);
         
         $contrato->corretor = $request->get('corretor');
@@ -101,11 +110,13 @@ class ContratoController extends Controller
         $contrato->tamanhoLote = $request->get('tamanhoLote');
         $contrato->valorLote = $request->get('valorLote');
         $contrato->valorPlanta = $request->get('valorPlanta');
+        $contrato->entrada = $request->get('entrada');
+        $contrato->muro = $request->get('muro');
 
         $contrato->save();
 
         $dataEvento = new DateTime();
-        $noticia = array('cpf'=>$cpf, 'descricao'=>'Contrato realizado lote: '.$contrato->quadra.$contrato->lote, 'data'=>$dataEvento, 'tipo'=>'contrato');
+        $noticia = array('cpf'=>$cpf, 'descricao'=>'Contrato assinado no Empreendimento: '.$contrato->empreendimento.' no lote: '.$contrato->lote, 'data'=>$dataEvento, 'tipo'=>'contrato');
         DB::table('noticias')->insert($noticia);
 
         return redirect()->route('contrato.index')->with('msg', 'Contrato cadastrado!');

@@ -78,6 +78,7 @@ class ProcessoController extends Controller{
         $cliente = Cliente::find($cpf);
 
         $descricao = '';
+        $tipoprocesso = '';
         
         if(empty($processo->asscontrato)){ 
             $processo->asscontrato = $request->get('contrato');
@@ -90,6 +91,7 @@ class ProcessoController extends Controller{
             $descricao = 'Contrato assinado na construtora. Empreendimento '.$contrato->empreendimento;
             $processo->faseatual = "terreno_step";
             $dataEvento = $request->get('asscontrato');
+            $tipoprocesso = 'processo';
         }
         //condicional responsável para que o valor da data anterior não anule no envio do formulário
         if(empty($processo->docterreno)){
@@ -101,6 +103,7 @@ class ProcessoController extends Controller{
             $descricao = 'Documentos do terreno '.$contrato->quadra.$contrato->lote.' foram solicitados.';
             $processo->faseatual = "engenharia_step";
             $dataEvento = $request->get('dataterreno');
+            $tipoprocesso = 'processo';
         }
         
         if(empty($processo->engenharia)){
@@ -112,6 +115,7 @@ class ProcessoController extends Controller{
             $descricao = 'Engenharia solicitada. Lote: '.$contrato->quadra.$contrato->lote;
             $processo->faseatual = "docpessoal_step";
             $dataEvento = $request->get('dataengenharia');
+            $tipoprocesso = 'processo';
         }
         
         
@@ -124,6 +128,7 @@ class ProcessoController extends Controller{
             $descricao = 'Solicitado atualização de documentação pessoal. Cliente: '.$cliente->nome;
             $processo->faseatual = "conformidade_step";
             $dataEvento = $request->get('datadocpessoal');
+            $tipoprocesso = 'processo';
         }
         
         if(empty($processo->conformidade)){
@@ -136,6 +141,7 @@ class ProcessoController extends Controller{
             $descricao = 'Processo enviado para conformidade. Cliente: '.$cliente->nome;
             $processo->faseatual = "entrevista_step";
             $dataEvento = $request->get('dataconformidade');
+            $tipoprocesso = 'processo';
         }
 
 
@@ -149,6 +155,7 @@ class ProcessoController extends Controller{
             $descricao = 'Cliente marcado para entrevista com gerente da Caixa. Cliente: '.$cliente->nome;
             $processo->faseatual = "ccaixa_step";
             $dataEvento = $request->get('dataentrevista');
+            $tipoprocesso = 'processo';
         }
         
 
@@ -161,6 +168,7 @@ class ProcessoController extends Controller{
             $descricao = 'Contrato assinado na Caixa. Cliente: '.$cliente->nome;
             $processo->faseatual = "cartorio1_step";
             $dataEvento = $request->get('datacaixa');
+            $tipoprocesso = 'processo';
         }
         
 
@@ -173,6 +181,7 @@ class ProcessoController extends Controller{
             $descricao = 'Entrada nos documentos do cartório fase 1. Lote: '.$contrato->quadra.$contrato->lote;
             $processo->faseatual = "obras_step";
             $dataEvento = $request->get('datacartorio1');
+            $tipoprocesso = 'processo';
         }
         
 
@@ -185,6 +194,7 @@ class ProcessoController extends Controller{
             $descricao = 'Obras iniciadas. Casa: '.$contrato->quadra.$contrato->lote;
             $processo->faseatual = "prefeitura_step";
             $dataEvento = $request->get('dataobras');
+            $tipoprocesso = 'processo';
         }
         
 
@@ -197,14 +207,21 @@ class ProcessoController extends Controller{
             $descricao = 'Entrada nos documentos do cartório fase final. Casa: '.$contrato->quadra.$contrato->lote;
             //$processo->faseatual = "cartorio2";
             $dataEvento = $request->get('datacartorio2');
+            $tipoprocesso = 'processo';
         }
         
-        $processo->observacao = $request->get('avisos');
+        if(!empty($request->get('avisos'))){
+            $processo->observacao = $request->get('avisos');
+            $dataEvento = new DateTime();
+            $descricao = $request->get('avisos');
+            $tipoprocesso = 'aviso';
+        }
+        
         
         $processo->save();
 
         //$dataEvento = new DateTime();
-        $noticia = array('cpf'=>$cpf, 'descricao'=>$descricao, 'data'=>$dataEvento, 'tipo'=>'processo');
+        $noticia = array('cpf'=>$cpf, 'descricao'=>$descricao, 'data'=>$dataEvento, 'tipo'=>$tipoprocesso);
         DB::table('noticias')->insert($noticia);
 
         return redirect()->route('cliente.index');

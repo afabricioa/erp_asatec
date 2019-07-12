@@ -131,6 +131,11 @@ return [
         'cpf' => [
             'required' => 'É necessário fornecer um CPF.',
             'unique' => 'O CPF já foi cadastrado no sistema.',
+            'exists' => 'O CPF informado não possui processo cadastrado.',
+        ],
+        'cliente_cpf' => [
+            'required' => 'É necessário fornecer um CPF.',
+            'exists' => 'O CPF informado não possui processo cadastrado.',
         ],
         'rg' => [
             'required' => 'É necessário fornecer um RG.',

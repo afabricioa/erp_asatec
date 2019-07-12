@@ -15,14 +15,14 @@ use App\Contrato;
 class AcompanhamentoController extends Controller{
     
     public function buscar(){
-        $cpf = Input::get('cpf');
+        $cpf = Input::get('cliente_cpf');
 
         $data = [
-            'cpf' => $cpf,
+            'cliente_cpf' => $cpf,
         ];
 
         $validator = Validator::make($data, [
-            'cpf' => 'required',
+            'cliente_cpf' => ['required', 'exists:processos'],
         ]);
         
         if ($validator->fails()) {
@@ -34,7 +34,7 @@ class AcompanhamentoController extends Controller{
                 $cliente = Cliente::where('cpf', $cpf)->firstOrFail();
                 $contrato = Contrato::where('cliente_cpf', $cpf)->firstOrFail();
             }catch(ModelNotFoundException $e){
-                return view ('areacliente')->withMessage('CPF fornecido não possui um processo cadastrado!');
+                return view ('areacliente')->with('msg', 'CPF fornecido não possui um processo cadastrado!');
             }
         }
 

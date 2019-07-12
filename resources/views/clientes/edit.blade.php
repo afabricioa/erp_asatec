@@ -15,7 +15,7 @@
             @method('PUT')
             @csrf
             <div class="form-group">
-                <input type="text" name="nome" class="form-control" placeholder="Nome" required value="{{ $cliente->nome }}">
+                <input type="text" name="nome" class="form-control" placeholder="Nome" value="{{ $cliente->nome }}">
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">

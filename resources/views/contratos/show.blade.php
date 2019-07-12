@@ -40,6 +40,20 @@
                 </div>
             </div>
             <br>
+            <p class="card-text">Contém muro? 
+                @if ($contrato->muro == 'sim')
+                    Sim
+                @else
+                    Não
+                @endif
+            </p>
+
+            @if ($contrato->entrada != 0)
+                <p class="card-text">Valor de entrada: <span id="convertidoEntrada"></span></p>
+            @else
+                <p class="card-text">Entrada: Sem valor de entrada</p>
+            @endif
+            
             <div class="row">
                 <div class="col-sm-4">
                     <p class="card-text">Valor do Lote: <span id="convertidoLote"></span></p>
@@ -306,6 +320,7 @@
 
         $('#convertidoPlanta').append(formatter.format("{{ $contrato->valorPlanta }}"));
         $('#convertidoLote').append(formatter.format("{{ $contrato->valorLote }}"));
+        $('#convertidoEntrada').append(formatter.format("{{ $contrato->entrada }}"));
 
         $('.collapse').on('click', function (){
             $('#processo.in').toggleClass('in');

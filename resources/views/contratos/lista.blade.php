@@ -36,6 +36,8 @@
                     <th>Empreendimento</th>
                     <th>Lote</th>
                     <th>Casa</th>
+                    <th>Muro</th>
+                    <th>Entrada</th>
                     <th></th>
                 </tr>
             </thead>
@@ -45,7 +47,20 @@
                         <td>{{ $contrato->empreendimento }}</td>
                         <td>{{ $contrato->quadra }}{{ $contrato->lote }}</td>
                         <td>{{ $contrato->tipodacasa }}</td>
-                        <td><a href="{{ route('contrato.show', $contrato->cliente_cpf) }}"><i class="fas fa-info"></i></a></td>
+                        @if ($contrato->muro == 'sim')
+                            <td>Sim</td>
+                        @else
+                            <td>Não</td>
+                        @endif
+                        @if ($contrato->entrada != 0)
+                            <td>R$ {{ number_format($contrato->entrada, 2, ',', '.') }}</td>
+                        @else
+                            <td>Sem entrada</td>
+                        @endif
+                        <td>
+                            <a href="{{ route('contrato.show', $contrato->cliente_cpf) }}"><i class="fas fa-info"></i></a>
+                            <a href="{{ route('contrato.edit', $contrato->cliente_cpf) }}"><i class="fas fa-edit"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
@@ -83,6 +98,7 @@
             currency: 'BRL',
             minimumFractionDigits: 2
         });
+
     </script>
   
 @endsection

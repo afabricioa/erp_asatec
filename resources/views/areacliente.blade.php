@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="text-center">
-        @if(isset($message))
-            <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+        @if(Session::has('msg'))
+            <div class="modal fade" id="modalErro" tabindex="-1" role="dialog" aria-labelledby="modalErro" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-white" id="modalDelete">ASATEC</h5>
+                            <h5 class="modal-title text-white" id="modalErro">ASATEC</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -27,12 +27,12 @@
             <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100">
             <h4>Acompanhamento do Processo</h4>
             <div class="form-group row">
-                <label for="cpf" class="sr-only">cpf</label>
-                <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf') }}" placeholder="CPF" autofocus>
+                <label for="cliente_cpf" class="sr-only">CPF</label>
+                <input id="cliente_cpf" type="text" class="form-control{{ $errors->has('cliente_cpf') ? ' is-invalid' : '' }}" name="cliente_cpf" value="{{ old('cliente_cpf') }}" placeholder="CPF" autofocus>
 
-                @if ($errors->has('cpf'))
+                @if ($errors->has('cliente_cpf'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('cpf') }}</strong>
+                        <strong>{{ $errors->first('cliente_cpf') }}</strong>
                     </span>
                 @endif
             </div>

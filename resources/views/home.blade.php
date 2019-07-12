@@ -24,6 +24,14 @@
                             <span class="d-block text-left mt-3">
                                 <a href="{{ route('contrato.show', $noticia->cpf) }}">Detalhes</a>
                             </span>
+                        @elseif ($noticia->tipo == 'aviso')
+                            <strong class="d-block text-gray-dark">Observação adicionada</strong>
+                            {{ $noticia->descricao }}
+                            <br><br>
+                            <span> Data: {{ Carbon::parse($noticia->data)->format('d/m/Y') }} </span>
+                            <span class="d-block text-left mt-3">
+                                <a href="{{ route('contrato.show', $noticia->cpf) }}">Detalhes</a>
+                            </span>
                         @endif
 
                     </p>

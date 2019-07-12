@@ -25,6 +25,8 @@ class CreateContratosTable extends Migration
             $table->double('tamanhoLote')->nullable();
             $table->double('valorLote')->nullable();
             $table->double('valorPlanta')->nullable();
+            $table->string('muro')->nullable();
+            $table->double('entrada')->nullable();
             $table->timestamps();
         });
     }

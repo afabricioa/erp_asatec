@@ -1655,6 +1655,7 @@ pre code {
 .table td a{
   font-size: 1.3em;
   color: #3395f0;
+  margin-right: 10px;
 }
 
 .table td a:hover{
@@ -10957,7 +10958,7 @@ ul ul a {
 #restrita{
   width: 90%;
   margin: 0 auto;
-  height: 100vh;
+  height: 50vh;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -11378,3 +11379,11 @@ strong {
 #paginaProcesso img{
   margin: 50px 40%;
 } 
+
+.atualizacao{
+  background-color: #221f61;
+  color: #fff;
+  margin:0 0 50px 50px;
+  padding: 20px;
+  border-radius: 15px;
+}
