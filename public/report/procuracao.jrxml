@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="procuracao" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0c4bcd3a-9ec7-4f49-8c95-e8671a4900a1">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="asatec_sys.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="cpf" class="java.lang.String"/>
+	<parameter name="data" class="java.lang.String"/>
+	<parameter name="empresa" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT nome, cpf, rg, endereco, estadocivil, profissao FROM asatec_sys.clientes WHERE cpf = $P{cpf}   ]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="estadocivil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estadocivil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="profissao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="profissao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="10" width="400" height="60" uuid="77677ba8-346c-47dc-a8c0-f850011ac0c9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="20"/>
+				</textElement>
+				<text><![CDATA[Procuração]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="-5" width="540" height="55" uuid="f59ed6de-f783-4145-9243-a3bc0cc13955"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}+", "+ "brasileiro(a), "+ $F{profissao} +", "+$F{estadocivil}+", " +"portadora do CPF nº " + $F{cpf} + " e RG nº " + $F{rg} + ", residente e domiciliada no endereço " + $F{endereco} + "."]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="189" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="-32" width="540" height="60" uuid="8dd00d4b-9d27-4f8b-8a4f-566d82890413"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<text><![CDATA[OUTORGADO: Clay Cabral Lopes portador da cédula de identidade nº 1.336.471 SSP/PI e CPF nº 780.072.083-72, residente e domiciliada na Rua Hamilton Rezende, Nº 2200, Bairro: Planalto Santa Fé, Cidade de Teresina, Piauí.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="10" y="29" width="540" height="100" uuid="867a9e07-e6f0-4586-8e77-cd1857ac05ff"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["PODERES: Para representar o outorgante junto a " + $P{empresa} + " na prática de todos os atos necessários ao pedido de informações sobre débitos, levantamentos, certidões negativas e positivas, parcelamento de débitos e transferências cessando os poderes dessa procuração em " + $P{data} + "."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="140" width="160" height="30" uuid="027b8d86-fd85-47ad-b7f2-fd96c2a6229e"/>
+				<textElement>
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["TERESINA, " + $P{data}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="190" splitType="Stretch">
+			<line>
+				<reportElement x="80" y="100" width="401" height="2" uuid="e64cacb3-a37d-4d69-816b-59dfae9b3851"/>
+			</line>
+			<textField>
+				<reportElement x="181" y="110" width="198" height="20" uuid="5f168bd5-807b-4a76-9460-0837ad5c2f9c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="67c320b6-1b9d-486c-b9c1-5b688f66163e"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="130" width="197" height="20" uuid="42fa3cf3-34db-403f-87b4-f102c3166ced"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CPF nº " + $F{cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="150" width="198" height="20" uuid="c713ccdd-06ff-4db1-ab07-363985ee09e7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RG nº " + $F{rg} + "SSP/PI"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

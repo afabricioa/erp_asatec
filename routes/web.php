@@ -12,6 +12,8 @@
 */
 
 use Illuminate\Support\Facades\Input; 
+use JasperPHP\JasperPHP;
+use PHPJasper\PHPJasper;
 use App\Processo;
 
 Route::get('/', function () {
@@ -27,6 +29,10 @@ Route::get('/teste', 'PageController@teste');
 Route::get('/restrita', 'PageController@restrita');
 
 Route::get('/areacliente', 'PageController@areacliente');
+
+//JasperPHP - copam library
+//PHPJasper - geekcom library
+Route::get('/relatorio', 'RelatorioController@gerar');
 
 //Route::get('/showprocesso', 'PageController@showprocesso');
 
