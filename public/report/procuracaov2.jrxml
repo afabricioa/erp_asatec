@@ -6,6 +6,7 @@
 	<parameter name="cpf" class="java.lang.String"/>
 	<parameter name="data" class="java.lang.String"/>
 	<parameter name="empresa" class="java.lang.String"/>
+	<parameter name="datahoje" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT nome, cpf, rg, endereco, estadocivil, profissao FROM asatec_sys.clientes WHERE cpf = $P{cpf}]]>
 	</queryString>
@@ -106,11 +107,11 @@
 				<textFieldExpression><![CDATA["RG nº " + $F{rg} + "SSP/PI"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="10" y="1" width="160" height="30" uuid="027b8d86-fd85-47ad-b7f2-fd96c2a6229e"/>
+				<reportElement x="10" y="1" width="250" height="30" uuid="027b8d86-fd85-47ad-b7f2-fd96c2a6229e"/>
 				<textElement>
 					<font fontName="Calibri" size="14"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TERESINA, " + $P{data}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["TERESINA, " + $P{datahoje}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

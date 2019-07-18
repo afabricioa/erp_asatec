@@ -32,7 +32,8 @@ Route::get('/areacliente', 'PageController@areacliente');
 
 //JasperPHP - copam library
 //PHPJasper - geekcom library
-Route::get('/relatorio', 'RelatorioController@gerar');
+Route::any('/relatorio', 'DocumentoController@gerar');
+Route::get('/documentos', 'DocumentoController@documentos');
 
 //Route::get('/showprocesso', 'PageController@showprocesso');
 

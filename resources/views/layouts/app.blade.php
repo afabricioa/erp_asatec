@@ -143,6 +143,12 @@
                                         Contrato
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="/documentos">
+                                        <i class="fas fa-file-pdf"></i>
+                                        Documentos
+                                    </a>
+                                </li>
                             </ul>
 
                             <ul class="list-unstyled">
