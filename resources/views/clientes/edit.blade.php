@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <div class="text-center">
-                <h2>Alterar informações do Cliente</h2>
-            </div>
+    <div class="row justify-content-center">
+        <div class="descricao">
+            <h4 class="titulo-secao">Atualização de cliente</h4>
         </div>
     </div>
 

@@ -21,11 +21,9 @@
             </div>
         </div>
     @endif
-    <div class="card">
-        <div class="card-body">
-            <div class="text-center">
-                <h2>Contratos</h2>
-            </div>
+    <div class="row justify-content-center">
+        <div class="descricao">
+            <h4 class="titulo-secao">Lista de contratos</h4>
         </div>
     </div>
 

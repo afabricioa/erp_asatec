@@ -7,11 +7,9 @@
             <br><a style="color: #f49332" href="{{ route('contrato.index') }}">Inicial</a>
         </div>
     @else
-        <div class="card">
-            <div class="card-body">
-                <div class="text-center">
-                    <h2>Novo contrato</h2>
-                </div>
+        <div class="row justify-content-center">
+            <div class="descricao">
+                <h4 class="titulo-secao">Novo contrato</h4>
             </div>
         </div>
 

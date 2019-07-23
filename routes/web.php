@@ -32,8 +32,10 @@ Route::get('/areacliente', 'PageController@areacliente');
 
 //JasperPHP - copam library
 //PHPJasper - geekcom library
-Route::any('/relatorio', 'DocumentoController@gerar');
-Route::get('/documentos', 'DocumentoController@documentos');
+Route::any('/relatorio', 'DocumentoController@gerar')->middleware('auth');
+Route::get('/documentos', 'DocumentoController@documentos')->middleware('auth');
+Route::get('/empresas', 'DocumentoController@empresas')->middleware('auth');
+Route::post('/cadastrarEmpresa', 'DocumentoController@cadastrarEmpresa');
 
 //Route::get('/showprocesso', 'PageController@showprocesso');
 

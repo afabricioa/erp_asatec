@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="modeloviabilidade" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryNewPage="true" uuid="f9c294a8-4ba7-4bc7-9ef7-ed01631da386">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="asatec_sys.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="construtora" class="java.lang.String"/>
+	<parameter name="cnpj" class="java.lang.String"/>
+	<parameter name="endereco" class="java.lang.String"/>
+	<parameter name="bairro" class="java.lang.String"/>
+	<parameter name="cidade" class="java.lang.String"/>
+	<parameter name="estado" class="java.lang.String"/>
+	<parameter name="cpf" class="java.lang.String"/>
+	<parameter name="lote" class="java.lang.String"/>
+	<parameter name="quadra" class="java.lang.String"/>
+	<parameter name="loteamento" class="java.lang.String"/>
+	<parameter name="bairrolote" class="java.lang.String"/>
+	<parameter name="zona" class="java.lang.String"/>
+	<parameter name="data" class="java.lang.String"/>
+	<parameter name="datamento" class="java.lang.String"/>
+	<parameter name="frente" class="java.lang.String"/>
+	<parameter name="direito" class="java.lang.String"/>
+	<parameter name="esquerdo" class="java.lang.String"/>
+	<parameter name="fundo" class="java.lang.String"/>
+	<parameter name="area" class="java.lang.String"/>
+	<parameter name="perimetro" class="java.lang.String"/>
+	<parameter name="imo" class="java.lang.String"/>
+	<parameter name="valor" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT nome, cpf, rg, endereco, bairro, estadocivil, profissao FROM asatec_sys.clientes WHERE cpf = $P{cpf}]]>
+	</queryString>
+	<field name="nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="cpf" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="cpf"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="rg" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="rg"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="endereco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="endereco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="bairro" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="bairro"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="estadocivil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="estadocivil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="profissao" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="profissao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="786" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="190" width="491" height="60" uuid="6fbbfed0-7efb-470d-9e4c-a6da7dadfa1f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["COMPROMISSÁRIO COMPRADOR: " + $F{nome} + ", brasileiro(a), " + $F{profissao} + ", " + $F{estadocivil} + ", portador do CPF nº " + $F{cpf} + " residente no endereço " + $F{endereco} + ", no Bairro " + $F{bairro} + ", Teresina, Piauí."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="250" width="196" height="19" uuid="95bead03-e60e-4e2b-800f-40da3bcd83c1"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DO OBJETO DO CONTRATO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="270" width="490" height="120" uuid="58b84b20-2af0-4fe5-bd59-04fe0fa85982"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cláusula 1º. O presente, tem como OBJETO, o imóvel de propriedade do COMPROMITENTE, Lote de Terreno nº " + $P{lote} + ", da quadra " + $P{quadra} + ", do loteamento " + $P{loteamento} + ", situado no Bairro " + $P{bairrolote} + ", Zona " + $P{zona} + ", Data " + $P{datamento} + ", desta cidade, medindo " + $P{frente} + " metros de frente; Lado direito mede " + $P{direito} + " metros; Lado esquerdo mede " + $P{esquerdo} + " metros; e fundos mede " + $P{fundo} + " metros, com área de " + $P{area} + "m² e perímetro de " + $P{perimetro} + " metros, com inscrição municipal nº " + $P{imo} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="391" width="207" height="29" uuid="c0f21df1-f13d-4d94-9914-a0afd1797cbe"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DAS CONDIÇÕES DO IMÓVEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="420" width="490" height="50" uuid="b6c5e350-528d-4a33-a126-f924128bbad1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Cláusula 2º. O imóvel encontra-se nada data da assinatura deste contrato em perfeitas condições, livre de qualquer vício oculto ou aparente.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="480" width="314" height="29" uuid="a629d111-7833-4fa1-a74d-a84326e3909d"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DA POSSE E TRANSFERÊNCIA DA PROPRIEDADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="510" width="490" height="130" uuid="f79eb374-c640-4658-97d8-defad15495ff"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Cláusula 3º. Após a assinatura do presente contrato, o COMPROMITENTE permanecerá na posse do imóvel até o momento da efetiva e futura transmissão da propriedade com o Registro junto ao respectivo Cartório de Registro de Imóveis do 2º Ofício.
+Cláusula 4ª. Todas as despesas ligadas direta ou indiretamente à exceção do contrato, bem como aqueles referentes à transferência da propriedade, tais como escritura e registro, ficarão sob responsabilidade do COMPROMISSÁRIO, somando-se a estas, as despesas ligadas à tradição do imóvel.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="640" width="277" height="29" uuid="a7d1da8d-2b58-43d0-9248-71d8d13ca5f3"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DO PREÇO E DA FORMA DE PAGAMENTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="670" width="490" height="71" uuid="b16c021f-8105-4794-b37e-6d9756c0767a"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cláusula 5ª. O COMPROMISSÁRIO concorda em realizar o pagamento do preço total de "+ $P{valor} +", sendo que este valor será pago por forma de financiamento pela Caixa Econômica Federal."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="81" y="21" width="399" height="30" uuid="42c0776d-78e8-4ffd-bbc6-510cefa30def"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE COMPROMISSO DE COMPRA E VENDA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="110" width="488" height="69" uuid="5754a8ab-7256-440c-ac8b-e5705e662dbb"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["COMPROMITENTES VENDEDOR: "+  $P{construtora} +", estabelecida no endereço " + $P{endereco} + " no Bairro " + $P{bairro} + ", na cidade de " +  $P{cidade} + ", no estado " +  $P{estado} + ", inscrita no CNPJ " + $P{cnpj} + "."]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="802">
+			<break>
+				<reportElement x="0" y="0" width="99" height="1" uuid="ec6b6059-fba5-460c-8fbf-594865b9b85c"/>
+			</break>
+			<staticText>
+				<reportElement x="30" y="130" width="490" height="59" uuid="cbae97e0-4e9a-420a-95bc-ed13bac4b3b0"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cláusula 6ª. O presente contrato passa a vigorar entre as partes a partir da assinatura do mesmo.
+
+
+
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="28" y="330" width="218" height="20" uuid="2cf697c2-54ec-4e57-bf09-ad2957dffae5"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Teresina, " + $P{data}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="120" y="380" width="330" height="1" uuid="1b532294-076f-40bc-8113-7cf083cb88b2"/>
+			</line>
+			<staticText>
+				<reportElement x="173" y="391" width="214" height="19" uuid="bad545f7-fc26-47f4-b323-6d7c77f67c2d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[COMPROMITENTE VENDEDOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="125" y="410" width="310" height="19" uuid="35a50145-ec95-425a-97f2-6c12afd90999"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{construtora}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="120" y="471" width="330" height="1" uuid="aead313f-d22f-4dd8-9247-dfc8fd046e68"/>
+			</line>
+			<staticText>
+				<reportElement x="164" y="481" width="231" height="19" uuid="7cee009f-bba4-4015-aaf6-2cf664dcde6b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[COMPROMISSÁRIO COMPRADOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="500" width="325" height="19" uuid="9046e600-a1c6-449c-bf04-fd92a08bcccd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="46" y="543" width="118" height="26" uuid="7544dc2e-dc67-4373-8da2-74f1901e9f34"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[TESTEMUNHAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="610" width="239" height="1" uuid="b5325508-72a1-4b7b-8c12-3865d88bce28"/>
+			</line>
+			<line>
+				<reportElement x="303" y="610" width="239" height="1" uuid="c418a07f-74b0-480c-8e87-cf384c7527a9"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="620" width="238" height="39" uuid="21504cb4-63c0-4929-a732-c778f318eeff"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[NOME:
+CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="620" width="238" height="39" uuid="066d99f0-40b6-4b58-b72b-7bfbad750953"/>
+				<textElement>
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[NOME:
+CPF:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="100" width="170" height="30" uuid="cafff781-e810-4f70-bd04-2008854e2811"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DISPOSIÇÕES GERAIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="192" width="151" height="30" uuid="83402b4b-3d73-4aa4-9089-f3e1d55f2c4b"/>
+				<textElement>
+					<font fontName="Calibri" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DO FORO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="223" width="490" height="85" uuid="d107a91d-03b3-465a-8c2a-4f65ea58d060"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="12"/>
+				</textElement>
+				<text><![CDATA[Cláusula 7ª. Para dirimir quaisquer controvérsias oriundas do CONTRATO, as partes elegem o foro da comarca de Teresina - Piauí;
+Por estarem, assim justos e contratados, firmam o presente instrumento, em duas vias de igual teor, juntamente com 2 (duas) testemunhas.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -10988,6 +10988,12 @@ ul ul a {
   float: right
 }
 
+.esquerda{
+  float: left;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
 #areanotificacao{
   position: relative; 
   min-height: 200px;

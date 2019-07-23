@@ -58,6 +58,7 @@ class ClienteController extends Controller
             'cpf' => ['max:14', 'unique:clientes'],
             'rg' => ['max:9', 'unique:clientes'],
             'endereco' => 'required',
+            'bairro' => 'required',
             'estadocivil' => 'required',
             'profissao' => 'required',
         ]);
@@ -69,6 +70,7 @@ class ClienteController extends Controller
         $processo = array('cliente_cpf'=>$cpf);
         $contrato = array('cliente_cpf'=>$cpf);
 
+        //remover pontuações . e - da string do cpf
         $pontuacoes = array(".", "-");
         $cpfsenha = str_replace($pontuacoes, "", $cpf);
 
@@ -129,6 +131,7 @@ class ClienteController extends Controller
                 'rg' => 'required',
                 'estadocivil' => 'required',
                 'endereco' => 'required',
+                'bairro' => 'required',
                 'profissao' => 'required'
             ]);
 
@@ -138,6 +141,7 @@ class ClienteController extends Controller
             $cliente->rg = $request->get('rg');
             $cliente->estadocivil = $request->get('estadocivil');
             $cliente->endereco = $request->get('endereco');
+            $cliente->bairro = $request->get('bairro');
             $cliente->profissao = $request->get('profissao');
             $cliente->save();
 

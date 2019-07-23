@@ -36,10 +36,6 @@
             <p class="card-text">Endereço: {{ $cliente->endereco }}</p>
             <p class="card-text">Estado Civil: {{ $cliente->estadocivil }}</p>
             <p class="card-text">Ocupação: {{ $cliente->profissao }}</p>
-
-            <button class="btn btn-danger text-white">
-                <a href="/relatorio/{{ $cliente->cpf }}" target="_blank">Procuração</a>
-            </button>
         </div>
     </div>
 

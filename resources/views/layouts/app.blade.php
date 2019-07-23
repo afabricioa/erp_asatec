@@ -149,6 +149,12 @@
                                         Documentos
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="/empresas">
+                                        <i class="fas fa-building"></i>
+                                        Empresas
+                                    </a>
+                                </li>
                             </ul>
 
                             <ul class="list-unstyled">

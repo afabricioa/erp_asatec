@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="viabilidadev2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a844df65-276d-4df2-a048-02f31be05f01">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="empresa" class="java.lang.String"/>
+	<parameter name="bairro" class="java.lang.String"/>
+	<parameter name="loteamento" class="java.lang.String"/>
+	<parameter name="data" class="java.lang.String"/>
+	<parameter name="quadra" class="java.lang.String"/>
+	<parameter name="fornecimento" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band height="710" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="-80" width="560" height="790" uuid="72061558-8826-430a-8f7a-8aa7ff9dfcc3"/>
+				<imageExpression><![CDATA["asatec_sys/public/report/construvitta.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="130" y="70" width="301" height="30" uuid="e0d0c819-9526-4b65-b1c5-bbe4b9d6ab23"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="16"/>
+				</textElement>
+				<text><![CDATA[SOLICITAÇÃO DE VIABILIDADE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="12" y="180" width="530" height="110" uuid="36287845-e673-4f7e-97df-9bcc5aaa07a4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Solicito, a empresa " + $P{empresa} + ", declaração atualizada de Viabilidade Técnica para o fornecimento de " + $P{fornecimento} + " no Empreendimento denominado Loteamento “" + $P{loteamento} + "”, a ser construído pela Empresa Construvitta Construtora e Incorporadora LTDA, no Bairro " + $P{bairro} + ", desta Capital, para a quadra " + $P{quadra} + ", de acordo com inteiro teor em anexo."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="310" width="227" height="34" uuid="ee93f1ab-5f35-4ff0-9275-9ed9c02d2123"/>
+				<textElement>
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Teresina, " + $P{data}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="50" y="410" width="100" height="30" uuid="65b98069-0e6b-42c7-853b-43f9c33eff4d"/>
+				<textElement>
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<text><![CDATA[ATT,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="440" width="200" height="30" uuid="0343b930-7f86-4078-b27a-47803f665c2e"/>
+				<textElement>
+					<font fontName="Calibri" size="14"/>
+				</textElement>
+				<text><![CDATA[EDUARDO COSTA CARVALHO]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,24 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <div class="text-center">
-                <h2>Cadastrar novo cliente</h2>
-            </div>
+    <div class="row justify-content-center">
+        <div class="descricao">
+            <h4 class="titulo-secao">Cadastro de cliente</h4>
         </div>
     </div>
 
     <div class="container">
-        <div class="text-center">
-            <h4>Insira as informações do cliente</h4>
-        </div>
-        <br>
         <form method="POST" action="{{ route('cliente.store') }}">
             @csrf
             <div class="form-group">
-                <input type="text" name="nome" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}" placeholder="Nome">
-                
+                <label class="titulo-detalhes" for="nome">Nome</label>
+                <input type="text" name="nome" class="form-control{{ $errors->has('nome') ? ' is-invalid' : '' }}">
                 @if ($errors->has('nome'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('nome') }}</strong>
@@ -27,7 +21,8 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <input type="text" name="cpf" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ old('cpf') }}" placeholder="CPF" maxlength="14" OnKeyPress="validar('###.###.###-##',this)">
+                    <label class="titulo-detalhes" for="cpf">CPF</label>
+                    <input type="text" name="cpf" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" value="{{ old('cpf') }}" maxlength="14" OnKeyPress="validar('###.###.###-##',this)">
                     
                     @if ($errors->has('cpf'))
                         <span class="invalid-feedback" role="alert">
@@ -36,7 +31,8 @@
                     @endif
                 </div>
                 <div class="form-group col-md-4">
-                    <input type="text" name="rg" class="form-control{{ $errors->has('rg') ? ' is-invalid' : '' }}" placeholder="RG" maxlength="9" OnKeyPress="validar('#.###.###', this)">
+                    <label class="titulo-detalhes" for="rg">RG</label>
+                    <input type="text" name="rg" class="form-control{{ $errors->has('rg') ? ' is-invalid' : '' }}" maxlength="9" OnKeyPress="validar('#.###.###', this)">
                     @if ($errors->has('rg'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('rg') }}</strong>
@@ -44,6 +40,7 @@
                     @endif
                 </div>
                 <div class="form-group col-sm-4">
+                    <label class="titulo-detalhes" for="estadocivil">Estado Civil</label>
                     <select name="estadocivil" class="form-control form-control-md">
                         <option value="Solteiro">Solteiro(a)</option>
                         <option value="Casado">Casado(a)</option>
@@ -51,16 +48,29 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="text" name="endereco" class="form-control{{ $errors->has('endereco') ? ' is-invalid' : '' }}" placeholder="Endereço">
-                @if ($errors->has('endereco'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('endereco') }}</strong>
-                    </span>
-                @endif
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label class="titulo-detalhes" for="endereco">Endereço</label>
+                    <input type="text" name="endereco" class="form-control{{ $errors->has('endereco') ? ' is-invalid' : '' }}">
+                    @if ($errors->has('endereco'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('endereco') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="titulo-detalhes" for="bairro">Bairro</label>
+                    <input type="text" name="bairro" class="form-control{{ $errors->has('bairro') ? ' is-invalid' : '' }}">
+                    @if ($errors->has('bairro'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('bairro') }}</strong>
+                        </span>
+                    @endif
+                </div>
             </div>
             <div class="form-group">
-                <input type="text" name="profissao" class="form-control{{ $errors->has('profissao') ? ' is-invalid' : '' }}" placeholder="Ocupação">
+                <label class="titulo-detalhes" for="profissao">Ocupação</label>
+                <input type="text" name="profissao" class="form-control{{ $errors->has('profissao') ? ' is-invalid' : '' }}">
                 @if ($errors->has('profissao'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('profissao') }}</strong>
