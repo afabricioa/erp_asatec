@@ -12,3 +12,11 @@ Funções do sistema
 
 <p>-MARCAÇÃO DE FINALIZAÇÃO DE CADA ETAPA DO PROCESSO
 <p>-ÁREA ESPECÍFICA PARA ACOMPANHAMENTO DE PROCESSO POR PARTE DO CLIENTE
+
+<br>Tecnologias Utilizadas
+<p>-PHP, Framework Laravel 5.8
+<p>-MySQL
+<p>-JavaScript
+<p>-CSS3
+<p>-Jasper Report para gerar e JasperSoft para criar os documentos
+<p>-SVG para criação dos ícones
