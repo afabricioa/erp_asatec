@@ -83,7 +83,7 @@
                 <div class="row flex flex-wrap flex-spaced-fixed margin-bottom">
                     <div class="col-md-6">
                         <div class="descProcesso">
-                            Situação: <span class="spanDesc" id="fase"></span>
+                            Fase atual: <span class="spanDesc" id="fase"></span>
                         </div>
                     </div>
                     <div class="col-md-6">

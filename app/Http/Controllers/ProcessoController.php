@@ -100,7 +100,7 @@ class ProcessoController extends Controller{
             
         }
         if(!empty($request->get('docterreno'))){
-            $descricao = 'Documentos do terreno '.$contrato->quadra.$contrato->lote.' foram solicitados.';
+            $descricao = 'Documentos do terreno '.$contrato->lote.' foram solicitados.';
             $processo->faseatual = "engenharia_step";
             $dataEvento = $request->get('dataterreno');
             $tipoprocesso = 'processo';
@@ -112,7 +112,7 @@ class ProcessoController extends Controller{
             
         }
         if(!empty($request->get('engenharia'))){
-            $descricao = 'Engenharia solicitada. Lote: '.$contrato->quadra.$contrato->lote;
+            $descricao = 'Engenharia solicitada. Lote: '.$contrato->lote;
             $processo->faseatual = "docpessoal_step";
             $dataEvento = $request->get('dataengenharia');
             $tipoprocesso = 'processo';
@@ -178,7 +178,7 @@ class ProcessoController extends Controller{
             
         }
         if(!empty($request->get('cartorio1'))){
-            $descricao = 'Entrada nos documentos do cartório fase 1. Lote: '.$contrato->quadra.$contrato->lote;
+            $descricao = 'Entrada nos documentos do cartório fase 1. Lote: '.$contrato->lote;
             $processo->faseatual = "obras_step";
             $dataEvento = $request->get('datacartorio1');
             $tipoprocesso = 'processo';
@@ -191,7 +191,7 @@ class ProcessoController extends Controller{
             
         }
         if(!empty($request->get('obras'))){
-            $descricao = 'Obras iniciadas. Casa: '.$contrato->quadra.$contrato->lote;
+            $descricao = 'Obras iniciadas. Casa: '.$contrato->lote;
             $processo->faseatual = "prefeitura_step";
             $dataEvento = $request->get('dataobras');
             $tipoprocesso = 'processo';
@@ -204,7 +204,7 @@ class ProcessoController extends Controller{
             
         }
         if(!empty($request->get('cartorio2'))){
-            $descricao = 'Entrada nos documentos do cartório fase final. Casa: '.$contrato->quadra.$contrato->lote;
+            $descricao = 'Entrada nos documentos do cartório fase final. Casa: '.$contrato->lote;
             //$processo->faseatual = "cartorio2";
             $dataEvento = $request->get('datacartorio2');
             $tipoprocesso = 'processo';
@@ -213,10 +213,10 @@ class ProcessoController extends Controller{
         if(!empty($request->get('avisos'))){
             $processo->observacao = $request->get('avisos');
             $dataEvento = new DateTime();
-            $descricao = $request->get('avisos');
+            $descricao = $request->get('avisos').' empreendimento '. $contrato->empreendimento. ': ' .$contrato->lote;
             $tipoprocesso = 'aviso';
         }
-        
+
         
         $processo->save();
 

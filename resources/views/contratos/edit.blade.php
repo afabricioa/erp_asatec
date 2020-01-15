@@ -134,5 +134,11 @@
                 valor.value += texto.substring(0,1);
             }
         }
+
+        if("{{ $contrato->muro }}" == "sim"){
+            document.getElementById("sim").checked = true;
+        }else{
+            document.getElementById("nao").checked = true;
+        }
     </script>
 @endsection
