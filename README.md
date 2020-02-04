@@ -21,3 +21,10 @@ Funções do sistema
 <p>-CSS3
 <p>-Jasper Report para gerar e JasperSoft para criar os documentos
 <p>-SVG para criação dos ícones
+
+
+<p>Como usar
+    <p>clonar o repositório ou fazer o download do mesmo na sua máquina
+    <p>pelo terminal ir até a pasta do projeto
+    <p>utilizar o comando "php artisan serve"
+    <p>configurar o banco de dados de acordo com sua preferência
