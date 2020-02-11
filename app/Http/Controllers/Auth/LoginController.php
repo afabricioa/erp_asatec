@@ -35,7 +35,7 @@ class LoginController extends Controller
     //         return redirect()->route('cliente.index');
     //     }else if(Auth::user()->isAdmin == 'cliente'){
     //         $usuario = Auth::user()->username;
-            
+
     //         return redirect()->route('processo.show', $usuario);
     //     }else{
     //         return redirect()->route('login')->with('msg', 'Você não tem permissão para acessar essa página');
@@ -73,7 +73,7 @@ class LoginController extends Controller
     public function field(Request $request)
     {
         $email = $this->username();
-        return filter_var($request->get($email), FILTER_VALIDATE_EMAIL) ? $email : 'username';
+        return filter_var($request->get($email), FILTER_VALIDATE_EMAIL) ? $email : 'email';
     }
     /**
      * Validate the user login request.

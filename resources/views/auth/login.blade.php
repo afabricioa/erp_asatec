@@ -7,7 +7,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-white" id="modalDelete">ASATEC</h5>
+                            <h5 class="modal-title text-white" id="modalDelete">ERP</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -24,7 +24,8 @@
         @endif
         <form id="formulario" method="POST" action="{{ route('login') }}">
             @csrf
-            <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100">
+            <h1>ERP Logo</h1>
+            {{-- <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100"> --}}
             <div class="form-group row">
                 <label for="email" class="sr-only">Email</label>
                 <input id="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus>
@@ -64,6 +65,9 @@
                     <a  href="/areacliente" class="btn btn-lg btn-asatec btn-block">
                         Área do Cliente
                     </a>
+                    <a  href="register" class="btn btn-lg btn-success btn-block">
+                        Registrar Admin
+                    </a>
 
                     {{-- @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -71,7 +75,7 @@
                         </a>
                     @endif --}}
             </div>
-            <p class="mt-5 mb-3 text-muted">© 2019. Construtora ASATEC</p>
+            <p class="mt-5 mb-3 text-muted">© 2019. Protótipo ERP</p>
         </form>
     </div>
 @endsection

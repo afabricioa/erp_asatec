@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('ERP MODELO', 'ERP') }}</title>
     <link rel="icon" href="{{ asset('imgs/asatecicon.ico')}}" />
 
     <!-- Scripts -->
@@ -15,8 +15,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
     <script src="{{ asset('js/datatable/jquery-3.3.1.js') }}"></script>
     {{-- <script src="{{ asset('js/bootstrap.js') }}" ></script> --}}
-    
-    <!-- Datatable --> 
+
+    <!-- Datatable -->
     <script src="{{ asset('js/datatable/datatables.js') }}"></script>
     <script src="{{ asset('js/datatable/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
@@ -35,11 +35,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/datatable.css')}}" rel="stylesheet">
-    
+
 </head>
 <body>
     <div id="app">
-        @auth
+        {{-- @auth
             @if(Auth::user()->isAdmin == 'cliente')
                 <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-laravel">
                     <div class="container-fluid">
@@ -69,13 +69,13 @@
                                         </li>
                                     @endif
                                 @else
-                                    
+
                                     <li class="nav-item">
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                             {{ __('Sair') }}
-                                                
+
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
@@ -90,7 +90,7 @@
                     @yield('content')
                 </div>
             @endif
-        @endauth
+        @endauth --}}
 
         <main>
             @auth
@@ -99,8 +99,8 @@
                         <!-- Sidebar -->
                         <div id="sidebar">
                             <div class="sidebar-header">
-                                <h3><span style="color: orange">ASA</span><span style="color: blue">TEC</span></h3>
-                                <strong>ASA</strong>
+                                <h3><span style="color: orange">MO</span><span style="color: blue">DEL</span></h3>
+                                <strong>ERP</strong>
                             </div>
 
                             <ul class="list-unstyled components">

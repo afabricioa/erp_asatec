@@ -24,7 +24,8 @@
         @endif
         <form id="formulario" method="POST" action="/buscar" role="search">
             @csrf
-            <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100">
+            {{-- <img class="mb-4" src="/../imgs/astcv2.png" width="140" height="100"> --}}
+            <H1>ERP Modelo</H1>
             <h4>Acompanhamento do Processo</h4>
             <div class="form-group row">
                 <label for="cliente_cpf" class="sr-only">CPF</label>
