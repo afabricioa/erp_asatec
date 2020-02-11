@@ -42,7 +42,7 @@
                     Visualizar
                 </button>
             </div>
-            <p class="mt-5 mb-3 text-muted">© 2019. Construtora ASATEC</p>
+            <p class="mt-5 mb-3 text-muted">© 2019. Protótipo ERP</p>
         </form>
     </div>
 
