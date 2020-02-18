@@ -29,7 +29,7 @@
             <h4>Acompanhamento do Processo</h4>
             <div class="form-group row">
                 <label for="cliente_cpf" class="sr-only">CPF</label>
-                <input id="cliente_cpf" type="text" class="form-control{{ $errors->has('cliente_cpf') ? ' is-invalid' : '' }}" name="cliente_cpf" value="{{ old('cliente_cpf') }}" placeholder="CPF" autofocus>
+                <input id="cliente_cpf" type="text" class="form-control{{ $errors->has('cliente_cpf') ? ' is-invalid' : '' }}" name="cliente_cpf" value="{{ old('cliente_cpf') }}" placeholder="CPF" autofocus maxlength="14" OnKeyPress="validar('###.###.###-##',this)">
 
                 @if ($errors->has('cliente_cpf'))
                     <span class="invalid-feedback" role="alert">
@@ -48,5 +48,17 @@
 
     <script>
         $('#modalErro').modal('show');
+    </script>
+
+    <script>
+        function validar(formato, valor){
+            var i = valor.value.length;
+            var saida = formato.substring(0,1);
+            var texto = formato.substring(i);
+
+            if(texto.substring(0,1) != saida){
+                valor.value += texto.substring(0,1);
+            }
+        }
     </script>
 @endsection
